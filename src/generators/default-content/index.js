@@ -1,10 +1,10 @@
-import { destinationPath, moveFile, replaceText } from '../helper.js';
+import { getDestinationPath, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	replaceText(`${__dirname}/templates/configured/_package.json`, templateData);
 	moveFile(
 		`${__dirname}/templates/configured/_package.json`,
-		destinationPath('package.json'),
+		`${getDestinationPath(templateData.tagName)}/package.json`
 	);
 
 	const replacementsREADME = templateData;
@@ -21,25 +21,25 @@ export function run(templateData) {
 > - [ ] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)
 > - [ ] Demo page
 > - [ ] README documentation
-
 ` : '';
+	replacementsREADME.description = `\n${templateData.description}`;
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	moveFile(
 		`${__dirname}/templates/configured/_README.md`,
-		destinationPath('README.md'),
+		`${getDestinationPath(templateData.tagName)}/README.md`
 	);
 
-	replaceText(`${__dirname}/templates/configured/_CODEOWNERS.json`, { codeowners: templateData.codeowners });
+	replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
 	moveFile(
-		`${__dirname}/templates/configured/_CODEOWNERS.json`,
-		destinationPath('CODEOWNERS'),
+		`${__dirname}/templates/configured/_CODEOWNERS`,
+		`${getDestinationPath(templateData.tagName)}/CODEOWNERS`
 	);
 
 	replaceText(`${__dirname}/templates/configured/LICENSE`, { year: new Date().getFullYear().toString() });
 	moveFile(
 		`${__dirname}/templates/configured/LICENSE`,
-		destinationPath('LICENSE'),
+		`${getDestinationPath(templateData.tagName)}/LICENSE`
 	);
 
-	// move all files in static
+	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.tagName));
 }

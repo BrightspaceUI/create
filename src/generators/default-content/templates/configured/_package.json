@@ -1,7 +1,7 @@
 {
   "name": "<%= packageName %>",
   "description": "<%= description %>",
-  "repository": "https://github.com/<%= githubOrg %>/<%= className %>.git",
+  "repository": "https://github.com/<%= githubOrg %>/<%= hyphenatedName %>.git",
   "scripts": {
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint . --ext .js,.html"

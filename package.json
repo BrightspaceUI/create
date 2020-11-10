@@ -13,8 +13,15 @@
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
+  "dependencies": {
+    "prompts": "^2.1.0"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.9.0",
     "babel-eslint": "^10",
+    "babel-plugin-transform-dynamic-import": "^2.1.0",
     "eslint-config-brightspace": "^0.6.7",
     "eslint-plugin-html": "^6",
     "eslint-plugin-lit": "^1",

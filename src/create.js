@@ -2,14 +2,14 @@
 
 /* eslint-disable no-console */
 import prompts from 'prompts';
-import { run as setupBoilerplate } from 'generators/boilerplate/';
+import { run as setupDefaultContent } from './generators/default-content';
 
 async function getOptions() {
 	const questions = [
 		{
 			type: 'select',
 			name: 'creationType',
-			messages: 'What would you like to create?',
+			message: 'What would you like to create?',
 			choices: [
 				{ title: 'Web Component', value: 'wc' }
 			]
@@ -17,7 +17,7 @@ async function getOptions() {
 		{
 			type: 'select',
 			name: 'techType',
-			messages: 'What type of component would you like to create?',
+			message: 'What type of component would you like to create?',
 			choices: [
 				{ title: 'LitElement', value: 'lit' }
 			]
@@ -25,12 +25,12 @@ async function getOptions() {
 		{
 			type: 'text',
 			name: 'hyphenatedName',
-			messages: 'What would you like to name your component? Use hyphenation instead of camelcase. Do not include the d2l prefix.'
+			message: 'What would you like to name your component? Use hyphenation instead of camelcase. Do not include the d2l prefix.'
 		},
 		{
 			type: 'select',
 			name: 'org',
-			messages: 'Is this a labs or official component?',
+			message: 'Is this a labs or official component?',
 			choices: [
 				{ title: 'labs', value: 'labs' },
 				{ title: 'official', value: 'official' }
@@ -39,17 +39,17 @@ async function getOptions() {
 		{
 			type: 'text',
 			name: 'description',
-			messages: 'What is the component description?'
+			message: 'What is the component description?'
 		},
 		{
 			type: 'text',
 			name: 'codeowners',
-			messages: 'Who is/are the codeowner(s)? (e.g., @johnsmith)'
+			message: 'Who is/are the codeowner(s)? (e.g., @johnsmith)'
 		},
 		{
 			type: 'select',
 			name: 'publish',
-			messages: 'Would you like to publish this component to NPM?',
+			message: 'Would you like to publish this component to NPM?',
 			choices: [
 				{ title: 'No', value: 'false' },
 				{ title: 'Yes', value: 'true' }
@@ -58,7 +58,7 @@ async function getOptions() {
 		{
 			type: 'select',
 			name: 'type',
-			messages: 'Would you like to add localization?',
+			message: 'Would you like to add localization?',
 			choices: [
 				{ title: 'No', value: 'false' },
 				{ title: 'Static', value: 'static' },
@@ -91,7 +91,7 @@ async function executeGenerator() {
 	options.orgName = options.org === 'official' ? '@brightspace-ui' : '@brightspace-ui-labs';
 	options.packageName = `${options.orgName}/${options.hyphenatedName}`;
 
-	setupBoilerplate();
+	setupDefaultContent(options);
 
 }
 
@@ -101,4 +101,4 @@ async function executeGenerator() {
 	} catch (err) {
 		console.log(err);
 	}
-});
+})();
