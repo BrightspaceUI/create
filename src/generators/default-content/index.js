@@ -4,7 +4,7 @@ export function run(templateData) {
 	replaceText(`${__dirname}/templates/configured/_package.json`, templateData);
 	moveFile(
 		`${__dirname}/templates/configured/_package.json`,
-		`${getDestinationPath(templateData.tagName)}/package.json`
+		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
 
 	const replacementsREADME = templateData;
@@ -26,20 +26,20 @@ export function run(templateData) {
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	moveFile(
 		`${__dirname}/templates/configured/_README.md`,
-		`${getDestinationPath(templateData.tagName)}/README.md`
+		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
 	replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
 	moveFile(
 		`${__dirname}/templates/configured/_CODEOWNERS`,
-		`${getDestinationPath(templateData.tagName)}/CODEOWNERS`
+		`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
 	);
 
 	replaceText(`${__dirname}/templates/configured/LICENSE`, { year: new Date().getFullYear().toString() });
 	moveFile(
 		`${__dirname}/templates/configured/LICENSE`,
-		`${getDestinationPath(templateData.tagName)}/LICENSE`
+		`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`
 	);
 
-	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.tagName));
+	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
