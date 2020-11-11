@@ -14,15 +14,16 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "dependencies": {
-    "prompts": "^2.1.0"
+    "deepmerge": "^4",
+    "prompts": "^2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/cli": "^7",
+    "@babel/core": "^7",
+    "@babel/preset-env": "^7",
     "babel-eslint": "^10",
-    "babel-plugin-transform-dynamic-import": "^2.1.0",
-    "eslint-config-brightspace": "^0.6.7",
+    "babel-plugin-transform-dynamic-import": "^2",
+    "eslint-config-brightspace": "^0.11.0",
     "eslint-plugin-html": "^6",
     "eslint-plugin-lit": "^1",
     "eslint-plugin-sort-class-members": "^1"

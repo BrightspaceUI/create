@@ -1,18 +1,8 @@
 # <%= name %>
 
-[![NPM version](https://img.shields.io/npm/v/<%= packageName %>.svg)](https://www.npmjs.org/package/<%= packageName %>)
-[![Dependabot badge](https://flat.badgen.net/dependabot/<%= githubOrg %>/<%= hyphenatedName %>?icon=dependabot)](https://app.dependabot.com/)
 [![Build status](https://travis-ci.com/<%= packageName %>.svg?branch=master)](https://travis-ci.com/<%= packageName %>)
 
 <%= labsChecklist %><%= description %>
-
-## Installation
-
-To install from NPM:
-
-```shell
-npm install <%= packageName %>
-```
 
 ## Usage
 

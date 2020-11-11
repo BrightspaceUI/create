@@ -7,22 +7,6 @@ import { run as setupDefaultContent } from './generators/default-content';
 async function getOptions() {
 	const questions = [
 		{
-			type: 'select',
-			name: 'creationType',
-			message: 'What would you like to create?',
-			choices: [
-				{ title: 'Web Component', value: 'wc' }
-			]
-		},
-		{
-			type: 'select',
-			name: 'techType',
-			message: 'What type of component would you like to create?',
-			choices: [
-				{ title: 'LitElement', value: 'lit' }
-			]
-		},
-		{
 			type: 'text',
 			name: 'hyphenatedName',
 			message: 'What would you like to name your component? Use hyphenation instead of camelcase. Do not include the d2l prefix.'
@@ -44,27 +28,7 @@ async function getOptions() {
 		{
 			type: 'text',
 			name: 'codeowners',
-			message: 'Who is/are the codeowner(s)? (e.g., @johnsmith)'
-		},
-		{
-			type: 'select',
-			name: 'publish',
-			message: 'Would you like to publish this component to NPM?',
-			choices: [
-				{ title: 'No', value: 'false' },
-				{ title: 'Yes', value: 'true' }
-			]
-		},
-		{
-			type: 'select',
-			name: 'type',
-			message: 'Would you like to add localization?',
-			choices: [
-				{ title: 'No', value: 'false' },
-				{ title: 'Static', value: 'static' },
-				{ title: 'Dynamic', value: 'dynamic' },
-				{ title: 'Serge (dynamic)', value: 'serge' }
-			]
+			message: 'What is/are the github username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
 		}
 	];
 	return await prompts(questions, {
