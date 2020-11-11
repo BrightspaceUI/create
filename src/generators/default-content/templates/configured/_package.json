@@ -1,0 +1,22 @@
+{
+  "name": "<%= packageName %>",
+  "description": "<%= description %>",
+  "repository": "https://github.com/<%= githubOrg %>/<%= hyphenatedName %>.git",
+  "scripts": {
+    "lint": "npm run lint:eslint && npm run lint:style",
+    "lint:eslint": "eslint . --ext .js,.html",
+    "lint:style": "stylelint \"**/*.js\""
+  },
+  "author": "D2L Corporation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@brightspace-ui/stylelint-config": "^0.0.2",
+    "babel-eslint": "^10",
+    "eslint": "^6",
+    "eslint-config-brightspace": "^0.6.7",
+    "eslint-plugin-html": "^6",
+    "eslint-plugin-lit": "^1",
+    "eslint-plugin-sort-class-members": "^1",
+    "stylelint": "^13"
+  }
+}
