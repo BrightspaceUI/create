@@ -3,6 +3,14 @@
 /* eslint-disable no-console */
 import prompts from 'prompts';
 import { run as setupDefaultContent } from './generators/default-content';
+import { run as setupDemo } from './generators/demo';
+import { run as setupElement } from './generators/wc-lit-element';
+import { run as setupTestUnit } from './generators/test-unit';
+
+function getClassName(hyphenatedName) {
+	const hyphenRemoved = hyphenatedName.replace(/-([a-z])/g, (g) => { return g[1].toUpperCase(); });
+	return hyphenRemoved.charAt(0).toUpperCase() + hyphenRemoved.slice(1);
+}
 
 async function getOptions() {
 	const questions = [
@@ -48,7 +56,7 @@ async function executeGenerator() {
 	 * tagName = d2l-my-element
 	 */
 	options.hyphenatedName = options.hyphenatedName.toLowerCase();
-	options.className = options.hyphenatedName.replace(/-([a-z])/g, (g) => { return g[1].toUpperCase(); });
+	options.className = getClassName(options.hyphenatedName);
 	options.tagName = `d2l-${options.org === 'labs' ? 'labs-' : ''}${options.hyphenatedName}`;
 
 	options.githubOrg = options.org === 'official' ? 'BrightspaceUI' : 'BrightspaceUILabs';
@@ -56,6 +64,9 @@ async function executeGenerator() {
 	options.packageName = `${options.orgName}/${options.hyphenatedName}`;
 
 	setupDefaultContent(options);
+	setupElement(options);
+	setupTestUnit(options);
+	setupDemo(options);
 
 }
 
