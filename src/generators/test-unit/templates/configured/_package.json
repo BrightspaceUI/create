@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@open-wc/testing": "^2",
-    "@open-wc/testing-karma": "^3",
+    "@open-wc/testing-karma": "^4",
     "karma-sauce-launcher": "^2"
   }
 }

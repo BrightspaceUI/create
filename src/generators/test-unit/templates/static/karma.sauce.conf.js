@@ -6,17 +6,17 @@ const customLaunchers = {
 	chrome: {
 		base: 'SauceLabs',
 		browserName: 'chrome',
-		platform: 'OS X 10.13',
+		platform: 'OS X 10.15',
 	},
 	firefox: {
 		base: 'SauceLabs',
 		browserName: 'firefox',
-		platform: 'OS X 10.13'
+		platform: 'OS X 10.15'
 	},
 	safari: {
 		base: 'SauceLabs',
 		browserName: 'safari',
-		platform: 'OS X 10.13'
+		platform: 'OS X 10.15'
 	},
 	edge: {
 		base: 'SauceLabs',
@@ -26,8 +26,10 @@ const customLaunchers = {
 };
 
 module.exports = config => {
+	const defaultConfig = createDefaultConfig(config);
+	defaultConfig.browsers = []; // remove ChromeHeadless
 	config.set(
-		merge(createDefaultConfig(config), {
+		merge(defaultConfig, {
 			files: [
 				// runs all files ending with .test in the test folder,
 				// can be overwritten by passing a --grep flag. examples:
@@ -46,7 +48,7 @@ module.exports = config => {
 			},
 			customLaunchers: customLaunchers,
 			browsers: Object.keys(customLaunchers),
-			reporters: ['dots', 'saucelabs'],
+			reporters: ['saucelabs'],
 			singleRun: true
 		}),
 	);
