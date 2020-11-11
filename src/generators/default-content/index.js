@@ -8,7 +8,7 @@ export function run(templateData) {
 	);
 
 	const replacementsREADME = templateData;
-	replacementsREADME.labsChecklist = templateData.org === 'labs' ? `> Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
+	replacementsREADME.labsChecklist = templateData.org === 'labs' ? `\n> Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
 >
 > - [ ] [Design organization buy-in](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#working-with-design)
 > - [ ] [design.d2l entry](http://design.d2l/)
@@ -20,20 +20,24 @@ export function run(templateData) {
 > - [ ] [Visual diff tests](https://github.com/BrightspaceUI/visual-diff)
 > - [ ] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)
 > - [ ] Demo page
-> - [ ] README documentation
-` : '';
-	replacementsREADME.description = `\n${templateData.description}`;
+> - [ ] README documentation\n` : '';
+
+	if (templateData.description) {
+		replacementsREADME.description = `\n${templateData.description}\n`;
+	}
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	moveFile(
 		`${__dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
-	replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
-	moveFile(
-		`${__dirname}/templates/configured/_CODEOWNERS`,
-		`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
-	);
+	if (templateData.codeowners) {
+		replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
+		moveFile(
+			`${__dirname}/templates/configured/_CODEOWNERS`,
+			`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
+		);
+	}
 
 	replaceText(`${__dirname}/templates/configured/LICENSE`, { year: new Date().getFullYear().toString() });
 	moveFile(

@@ -5,6 +5,48 @@ export function getDestinationPath(tagName) {
 	return path.join(process.cwd(), tagName);
 }
 
+export function mergeJSON(filePathNewJSON, filePathOriginalJSON) {
+	const newContent = fs.readFileSync(filePathNewJSON);
+	const originalContent = fs.readFileSync(filePathOriginalJSON);
+
+	const newContentJSON = JSON.parse(newContent);
+	const originalContentJSON = JSON.parse(originalContent);
+
+	Object.keys(originalContentJSON).forEach(key => {
+		if (newContentJSON[key]) {
+			let changes = false;
+			Object.keys(newContentJSON[key]).forEach(subkey => {
+				originalContentJSON[key][subkey] = newContentJSON[key][subkey];
+				changes = true;
+			});
+			if (changes) {
+				const ordered = {};
+				Object.keys(originalContentJSON[key]).sort().forEach(subkey => {
+					ordered[subkey] = originalContentJSON[key][subkey];
+				});
+				originalContentJSON[key] = ordered;
+			}
+		}
+	});
+
+	Object.keys(newContentJSON).forEach(key => {
+		if (!originalContentJSON[key]) {
+			originalContentJSON[key] = newContentJSON[key];
+		}
+	});
+
+	fs.writeFileSync(filePathOriginalJSON, JSON.stringify(originalContentJSON, null, 2));
+}
+
+export function mergeText(filePathNewText, filePathOriginalText) {
+	const newContent = fs.readFileSync(filePathNewText);
+	const originalContent = fs.readFileSync(filePathOriginalText);
+
+	const result = `${originalContent}${newContent}`;
+
+	fs.writeFileSync(filePathOriginalText, result);
+}
+
 export function moveFile(source, destination) {
 	const toPathDir = path.dirname(destination);
 	if (!fs.existsSync(toPathDir)) {
@@ -14,10 +56,9 @@ export function moveFile(source, destination) {
 }
 
 export function moveFilesInDir(sourceDir, destinationDir) {
-	fs.readdir(sourceDir, (err, files) => {
-		files.forEach(file => {
-			fs.renameSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
-		});
+	const files = fs.readdirSync(sourceDir);
+	files.forEach(file => {
+		fs.renameSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
 	});
 }
 

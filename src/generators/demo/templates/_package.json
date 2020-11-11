@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --dedupe --open --watch"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1",
+    "@webcomponents/webcomponentsjs": "^2"
+  }
+}
