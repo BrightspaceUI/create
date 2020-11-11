@@ -38,6 +38,15 @@ export function mergeJSON(filePathNewJSON, filePathOriginalJSON) {
 	fs.writeFileSync(filePathOriginalJSON, JSON.stringify(originalContentJSON, null, 2));
 }
 
+export function mergeText(filePathNewText, filePathOriginalText) {
+	const newContent = fs.readFileSync(filePathNewText);
+	const originalContent = fs.readFileSync(filePathOriginalText);
+
+	const result = `${originalContent}${newContent}`;
+
+	fs.writeFileSync(filePathOriginalText, result);
+}
+
 export function moveFile(source, destination) {
 	const toPathDir = path.dirname(destination);
 	if (!fs.existsSync(toPathDir)) {
@@ -47,10 +56,9 @@ export function moveFile(source, destination) {
 }
 
 export function moveFilesInDir(sourceDir, destinationDir) {
-	fs.readdir(sourceDir, (err, files) => {
-		files.forEach(file => {
-			fs.renameSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
-		});
+	const files = fs.readdirSync(sourceDir);
+	files.forEach(file => {
+		fs.renameSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
 	});
 }
 

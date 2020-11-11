@@ -1,4 +1,4 @@
-# <%= name %>
+# <%= className %>
 
 [![Build status](https://travis-ci.com/<%= packageName %>.svg?branch=master)](https://travis-ci.com/<%= packageName %>)
 <%= labsChecklist %><%= description %>
