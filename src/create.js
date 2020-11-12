@@ -6,6 +6,7 @@ import { run as setupDefaultContent } from './generators/default-content';
 import { run as setupDemo } from './generators/demo';
 import { run as setupElement } from './generators/wc-lit-element';
 import { run as setupTestUnit } from './generators/test-unit';
+import { run as setupTestVisualDiff } from './generators/test-visual-diff';
 
 function getClassName(hyphenatedName) {
 	const hyphenRemoved = hyphenatedName.replace(/-([a-z])/g, (g) => { return g[1].toUpperCase(); });
@@ -37,6 +38,15 @@ async function getOptions() {
 			type: 'text',
 			name: 'codeowners',
 			message: 'What is/are the github username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
+		},
+		{
+			type: 'select',
+			name: 'visualDiff',
+			message: 'Would you like visual-diff tests setup?',
+			choices: [
+				{ title: 'Yes', value: 'true' },
+				{ title: 'No', value: 'false' }
+			]
 		}
 	];
 	return await prompts(questions, {
@@ -66,6 +76,7 @@ async function executeGenerator() {
 	setupDefaultContent(options);
 	setupElement(options);
 	setupTestUnit(options);
+	if (options.visualDiff) setupTestVisualDiff(options);
 	setupDemo(options);
 
 }
