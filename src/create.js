@@ -42,7 +42,7 @@ async function getOptions() {
 		{
 			type: 'select',
 			name: 'visualDiff',
-			message: 'Would you like visual-diff tests setup?',
+			message: 'Would you like visual-diff tests set up?',
 			choices: [
 				{ title: 'Yes', value: true },
 				{ title: 'No', value: false }
