@@ -44,8 +44,8 @@ async function getOptions() {
 			name: 'visualDiff',
 			message: 'Would you like visual-diff tests setup?',
 			choices: [
-				{ title: 'Yes', value: 'true' },
-				{ title: 'No', value: 'false' }
+				{ title: 'Yes', value: true },
+				{ title: 'No', value: false }
 			]
 		}
 	];

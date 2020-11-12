@@ -9,6 +9,10 @@ export function run(templateData) {
 		`${__dirname}/templates/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
+	mergeText(
+		`${__dirname}/templates/.gitignore`,
+		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
+	);
 
 	replaceText(`${__dirname}/templates/_element.visual-diff.js`, templateData);
 	moveFile(
@@ -18,7 +22,7 @@ export function run(templateData) {
 
 	replaceText(`${__dirname}/templates/_element.visual-diff.html`, templateData);
 	moveFile(
-		`${__dirname}/templates/_element.visual-diff.js`,
+		`${__dirname}/templates/_element.visual-diff.html`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.html`
 	);
 }
