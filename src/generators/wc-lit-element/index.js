@@ -6,7 +6,14 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
 
-	replaceText(`${__dirname}/templates/configured/_element.js`, templateData);
+	const templateDataElement = templateData;
+	if (!templateData.localization) {
+		templateDataElement.extends = 'LitElement';
+		templateDataElement.localizeDemo = '';
+		templateDataElement.localizeMixin = '';
+		templateDataElement.localizeResources = '';
+	}
+	replaceText(`${__dirname}/templates/configured/_element.js`, templateDataElement);
 	moveFile(
 		`${__dirname}/templates/configured/_element.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`
