@@ -2,7 +2,8 @@ import { getDestinationPath, moveFile, moveFilesInDir, replaceText } from '../..
 
 const staticLocalization = `\n\tstatic async getLocalizeResources(langs) {
 		const langResources = {
-			'en': { 'myLangTerm': 'I am a localized string!' }
+			'en': { 'hello': 'Hello' },
+			'fr': { 'hello': 'Bonjour' }
 		};
 
 		for (let i = 0; i < langs.length; i++) {
@@ -19,7 +20,7 @@ const staticLocalization = `\n\tstatic async getLocalizeResources(langs) {
 
 export function run(templateData) {
 	const replacements = {
-		localizeDemo: '\n\t\t\t<div>Localization Example: ${this.localize(\'myLangTerm\')}</div>',
+		localizeDemo: '${this.localize(\'hello\')}',
 	}
 	if (templateData.localizationType === 'static') {
 		replacements.extends = 'LocalizeMixin(LitElement)';
@@ -27,7 +28,7 @@ export function run(templateData) {
 		replacements.localizeResources = staticLocalization;
 	} else {
 		replacements.extends = 'LocalizeElement(LitElement)';
-		replacements.localizeMixin = 'import { LocalizeElement } from \'../locales/localize-element.js\';\n';
+		replacements.localizeMixin = 'import { LocalizeElement } from \'./locales/localize-element.js\';\n';
 		replacements.localizeResources = '';
 
 		moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));

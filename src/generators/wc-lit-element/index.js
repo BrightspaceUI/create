@@ -9,7 +9,7 @@ export function run(templateData) {
 	const templateDataElement = templateData;
 	if (!templateData.localization) {
 		templateDataElement.extends = 'LitElement';
-		templateDataElement.localizeDemo = '';
+		templateDataElement.localizeDemo = 'Hello';
 		templateDataElement.localizeMixin = '';
 		templateDataElement.localizeResources = '';
 	}
