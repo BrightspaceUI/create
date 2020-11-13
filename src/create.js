@@ -5,6 +5,7 @@ import prompts from 'prompts';
 import { run as setupDefaultContent } from './generators/default-content';
 import { run as setupDemo } from './generators/demo';
 import { run as setupElement } from './generators/wc-lit-element';
+import { run as setupLocalization } from './generators/localization';
 import { run as setupTestUnit } from './generators/test-unit';
 import { run as setupTestVisualDiff } from './generators/test-visual-diff';
 
@@ -47,6 +48,25 @@ async function getOptions() {
 				{ title: 'Yes', value: true },
 				{ title: 'No', value: false }
 			]
+		},
+		{
+			type: 'select',
+			name: 'localization',
+			message: 'Would you like localization set up?',
+			choices: [
+				{ title: 'Yes', value: true },
+				{ title: 'No', value: false }
+			]
+		},
+		{
+			type: (_, all) => all.localization === true ? 'select' : null,
+			name: 'localizationType',
+			message: 'What type of localization would you like?',
+			choices: [
+				{ title: 'Static', value: 'static' },
+				{ title: 'Dynamic (no serge)', value: 'dynamic' },
+				{ title: 'Dynamic (yes serge)', value: 'serge' }
+			]
 		}
 	];
 	return await prompts(questions, {
@@ -78,6 +98,7 @@ async function executeGenerator() {
 	setupTestUnit(options);
 	if (options.visualDiff) setupTestVisualDiff(options);
 	setupDemo(options);
+	if (options.localization) setupLocalization(options);
 
 }
 
