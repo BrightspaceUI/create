@@ -20,8 +20,8 @@ const staticLocalization = `\n\tstatic async getLocalizeResources(langs) {
 
 export function run(templateData) {
 	const replacements = {
-		localizeDemo: '${this.localize(\'hello\')}',
-	}
+		localizeDemo: '${this.localize(\'hello\')}'
+	};
 	if (templateData.localizationType === 'static') {
 		replacements.extends = 'LocalizeMixin(LitElement)';
 		replacements.localizeMixin = 'import { LocalizeMixin } from \'@brightspace-ui/core/mixins/localize-mixin.js\';\n';
