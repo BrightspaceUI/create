@@ -1,0 +1,8 @@
+{
+  "files": [
+    "<%= hyphenatedName %>.js"<%= locales %>
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

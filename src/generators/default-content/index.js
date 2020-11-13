@@ -22,8 +22,10 @@ export function run(templateData) {
 > - [ ] Demo page
 > - [ ] README documentation\n` : '';
 
-	if (templateData.description) {
-		replacementsREADME.description = `\n${templateData.description}\n`;
+	if (templateData.description) replacementsREADME.description = `\n${templateData.description}\n`;
+	if (!templateData.publish) {
+		replacementsREADME.publishNpmInstallation = '';
+		replacementsREADME.publishNpmVersion = '';
 	}
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	moveFile(
