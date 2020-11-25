@@ -1,7 +1,15 @@
 # <%= packageName %>
-<%= publishNpmVersion %>
-[![Build status](https://travis-ci.com/<%= githubOrg %>/<%= hyphenatedName %>.svg?branch=master)](https://travis-ci.com/<%= githubOrg %>/<%= hyphenatedName %>)
-<%= labsChecklist %><%= description %><%= publishNpmInstallation %>
+
+[![NPM version](https://img.shields.io/npm/v/<%= packageName %>.svg)](https://www.npmjs.org/package/<%= packageName %>)
+<%= labsChecklist %><%= description %>
+## Installation
+
+Install from NPM:
+
+```shell
+npm install <%= packageName %>
+```
+
 ## Usage
 
 ```html

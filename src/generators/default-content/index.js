@@ -1,7 +1,10 @@
 import { getDestinationPath, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
 
 export function run(templateData) {
-	replaceText(`${__dirname}/templates/configured/_package.json`, templateData);
+
+	const replacementsPackage = templateData;
+	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/locales"' : '';
+	replaceText(`${__dirname}/templates/configured/_package.json`, replacementsPackage);
 	moveFile(
 		`${__dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
@@ -23,10 +26,6 @@ export function run(templateData) {
 > - [ ] README documentation\n` : '';
 
 	if (templateData.description) replacementsREADME.description = `\n${templateData.description}\n`;
-	if (!templateData.publish) {
-		replacementsREADME.publishNpmInstallation = '';
-		replacementsREADME.publishNpmVersion = '';
-	}
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	moveFile(
 		`${__dirname}/templates/configured/_README.md`,

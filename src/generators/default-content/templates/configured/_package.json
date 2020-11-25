@@ -18,5 +18,11 @@
     "eslint-plugin-lit": "^1",
     "eslint-plugin-sort-class-members": "^1",
     "stylelint": "^13"
+  },
+  "files": [
+    "<%= hyphenatedName %>.js"<%= locales %>
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
