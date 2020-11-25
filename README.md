@@ -21,13 +21,13 @@ npm init @brightspace-ui
 * Unit tests
 * Travis CI
 * Sauce cross-browser testing*
+* Publish to NPM
 
 \* Some additional setup required (see below)
 
 ### Optional
 
 * Localization (static or dynamic with optional Serge config)
-* Publish to NPM*
 * Visual diff testing*
 
 \* Some additional setup required (see below)
@@ -49,10 +49,6 @@ To do visual diff testing, the `GITHUB_RELEASE_TOKEN`, `VISUAL_DIFF_S3_ID`, and 
 To learn more about how to set this up, see the [Running in CI](https://github.com/BrightspaceUI/visual-diff#running-in-ci) section of the visual-diff readme.
 
 To use the Visual Difference Bot to run visual diff testing, see [here](https://github.com/BrightspaceUI/visual-difference-bot/blob/master/README.md/#utilizing-the-deployed-bot-for-your-existing-brightspace-repo).
-
-### Publish to NPM
-
-**Note that this will soon be in a Github action**
 
 ## Developing and Contributing
 

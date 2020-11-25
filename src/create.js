@@ -6,7 +6,6 @@ import { run as setupDefaultContent } from './generators/default-content';
 import { run as setupDemo } from './generators/demo';
 import { run as setupElement } from './generators/wc-lit-element';
 import { run as setupLocalization } from './generators/localization';
-import { run as setupPublish } from './generators/publish';
 import { run as setupTestUnit } from './generators/test-unit';
 import { run as setupTestVisualDiff } from './generators/test-visual-diff';
 
@@ -69,15 +68,6 @@ async function getOptions() {
 				{ title: 'Dynamic (yes serge)', value: 'serge' }
 			]
 		},
-		{
-			type: 'select',
-			name: 'publish',
-			message: 'Do you want your element published to NPM?',
-			choices: [
-				{ title: 'Yes', value: true },
-				{ title: 'No', value: false }
-			]
-		},
 	];
 	return await prompts(questions, {
 		onCancel: () => {
@@ -109,7 +99,6 @@ async function executeGenerator() {
 	if (options.visualDiff) setupTestVisualDiff(options);
 	setupDemo(options);
 	if (options.localization) setupLocalization(options);
-	if (options.publish) setupPublish(options);
 
 }
 
