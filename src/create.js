@@ -6,6 +6,7 @@ import { run as setupDefaultContent } from './generators/default-content';
 import { run as setupDemo } from './generators/demo';
 import { run as setupElement } from './generators/wc-lit-element';
 import { run as setupLocalization } from './generators/localization';
+import { run as setupRelease } from './generators/release';
 import { run as setupTestUnit } from './generators/test-unit';
 import { run as setupTestVisualDiff } from './generators/test-visual-diff';
 
@@ -99,6 +100,7 @@ async function executeGenerator() {
 	if (options.visualDiff) setupTestVisualDiff(options);
 	setupDemo(options);
 	if (options.localization) setupLocalization(options);
+	setupRelease(options);
 
 }
 

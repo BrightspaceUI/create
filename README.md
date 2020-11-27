@@ -17,13 +17,10 @@ npm init @brightspace-ui
 * Project boilerplate including: README, .editorconfig, .gitignore, package.json, CODEOWNERS and LICENSE (Apache-2.0)
 * LitElement component scaffold
 * Demo
-* Linting
-* Unit tests
-* Travis CI
-* Sauce cross-browser testing*
+* Linting (JavaScript, Style, Lit)
+* Unit tests with SauceLabs cross-browser testing
+* Continuous Integration using GitHub Actions
 * Publish to NPM
-
-\* Some additional setup required (see below)
 
 ### Optional
 
@@ -33,12 +30,6 @@ npm init @brightspace-ui
 \* Some additional setup required (see below)
 
 ## Additional Setup
-
-### Sauce Cross-browser Testing
-
-To do cross-browser testing using Sauce Labs, the API key needs to be encrypted into the .travis.yml file.
-
-To learn more about how to set this up, see the [testing](https://github.com/BrightspaceUI/guide/wiki/Testing) section of The Guide.
 
 ### Visual Diff Testing
 

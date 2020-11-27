@@ -2,11 +2,8 @@
 ### Testing
 
 ```shell
-# lint, unit test and visual-diff test (if configured)
+# lint & run headless unit tests
 npm test
-
-# lint only
-npm run lint
 
 # unit tests only
 npm run test:headless

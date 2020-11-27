@@ -9,10 +9,6 @@ export function run(templateData) {
 		`${__dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
-	mergeText(
-		`${__dirname}/templates/configured/.travis.yml`,
-		`${getDestinationPath(templateData.hyphenatedName)}/.travis.yml`
-	);
 
 	replaceText(`${__dirname}/templates/configured/_element.test.js`, templateData);
 	moveFile(
