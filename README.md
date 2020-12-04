@@ -43,4 +43,11 @@ To use the Visual Difference Bot to run visual diff testing, see [here](https://
 
 ## Developing and Contributing
 
+TODO:
+[ ] Dependabot
+[ ] GitHub Actions integration for visual-diff
+[ ] GitHub Actions integration for verify-translations
+[ ] Switch to @web/dev-server
+[ ] Switch to @web testing stuff
+
 Pull requests welcome!
