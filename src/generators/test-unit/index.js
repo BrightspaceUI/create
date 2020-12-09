@@ -21,5 +21,10 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/test/.eslintrc.json`
 	);
 
+	moveFile(
+		`${__dirname}/templates/configured/ci.yml`,
+		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/ci.yml`
+	);
+
 	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

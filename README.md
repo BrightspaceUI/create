@@ -33,19 +33,13 @@ npm init @brightspace-ui
 
 ### Visual Diff Testing
 
-**Note that this will soon be in a Github action**
-
-To do visual diff testing, the `GITHUB_RELEASE_TOKEN`, `VISUAL_DIFF_S3_ID`, and `VISUAL_DIFF_S3_SECRET` need to be encrypted into the .travis.yml file.
-
-To learn more about how to set this up, see the [Running in CI](https://github.com/BrightspaceUI/visual-diff#running-in-ci) section of the visual-diff readme.
-
-To use the Visual Difference Bot to run visual diff testing, see [here](https://github.com/BrightspaceUI/visual-difference-bot/blob/master/README.md/#utilizing-the-deployed-bot-for-your-existing-brightspace-repo).
+Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visuald-iff GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/visual-diff).
 
 ## Developing and Contributing
 
 TODO:
 * [ ] Dependabot
-* [ ] GitHub Actions integration for visual-diff
+* [x] GitHub Actions integration for visual-diff
 * [ ] GitHub Actions integration for verify-translations
 * [ ] Switch to @web/dev-server
 * [ ] Switch to @web testing stuff
