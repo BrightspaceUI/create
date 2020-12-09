@@ -1,5 +1,5 @@
 /* eslint quotes: 0 */
 
 export default {
-	'hello': '你好'
+	"hello": "你好"
 };
