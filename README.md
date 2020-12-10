@@ -33,7 +33,7 @@ npm init @brightspace-ui
 
 ### Visual Diff Testing
 
-Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visuald-iff GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/visual-diff).
+Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visual-diff GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/visual-diff).
 
 ## Developing and Contributing
 
