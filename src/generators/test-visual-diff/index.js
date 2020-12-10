@@ -1,4 +1,4 @@
-import { getDestinationPath, mergeJSON, mergeText, moveFile, replaceText } from '../../helper.js';
+import { getDestinationPath, mergeText, moveFile, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeText(
@@ -9,9 +9,9 @@ export function run(templateData) {
 		`${__dirname}/templates/.gitignore`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
-	mergeText(
-		`${__dirname}/templates/ci.yml`,
-		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/ci.yml`
+	moveFile(
+		`${__dirname}/templates/visual-diff.yml`,
+		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/visual-diff.yml`
 	);
 
 	replaceText(`${__dirname}/templates/_element.visual-diff.js`, templateData);
