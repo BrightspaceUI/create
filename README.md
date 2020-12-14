@@ -1,5 +1,7 @@
 # @brightspace-ui/create
 
+[![NPM version](https://img.shields.io/npm/v/@brightspace-ui/create.svg)](https://www.npmjs.org/package/@brightspace-ui/create)
+
 Initializer for Brightspace web components.
 
 ## Usage
