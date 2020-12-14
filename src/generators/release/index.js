@@ -1,4 +1,4 @@
-import { getDestinationPath, mergeText, moveFile } from '../../helper.js';
+import { copyFile, getDestinationPath, mergeText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeText(
@@ -6,7 +6,7 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/release.yml`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/release.yml`
 	);

@@ -1,4 +1,4 @@
-import { getDestinationPath, mergeJSON, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, mergeJSON, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeJSON(
@@ -14,10 +14,10 @@ export function run(templateData) {
 		templateDataElement.localizeResources = '';
 	}
 	replaceText(`${__dirname}/templates/configured/_element.js`, templateDataElement);
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/_element.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`
 	);
 
-	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

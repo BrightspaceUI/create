@@ -1,4 +1,4 @@
-import { getDestinationPath, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, replaceText } from '../../helper.js';
 
 const staticLocalization = `\n\tstatic async getLocalizeResources(langs) {
 		const langResources = {
@@ -31,13 +31,13 @@ export function run(templateData) {
 		replacements.localizeMixin = 'import { LocalizeElement } from \'./locales/localize-element.js\';\n';
 		replacements.localizeResources = '';
 
-		moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+		copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 	}
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, replacements);
 
 	if (templateData.localizationType === 'serge') {
 		replaceText(`${__dirname}/templates/configured/_element.serge.json`, templateData);
-		moveFile(
+		copyFile(
 			`${__dirname}/templates/configured/_element.serge.json`,
 			`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.serge.json`
 		);

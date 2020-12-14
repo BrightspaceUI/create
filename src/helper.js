@@ -47,18 +47,18 @@ export function mergeText(filePathNewText, filePathOriginalText) {
 	fs.writeFileSync(filePathOriginalText, result);
 }
 
-export function moveFile(source, destination) {
+export function copyFile(source, destination) {
 	const toPathDir = path.dirname(destination);
 	if (!fs.existsSync(toPathDir)) {
 		fs.mkdirSync(toPathDir, { recursive: true });
 	}
-	fs.renameSync(source, destination);
+	fs.copyFileSync(source, destination);
 }
 
-export function moveFilesInDir(sourceDir, destinationDir) {
+export function copyFilesInDir(sourceDir, destinationDir) {
 	const files = fs.readdirSync(sourceDir);
 	files.forEach(file => {
-		fs.renameSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
+		fs.copyFileSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
 	});
 }
 
