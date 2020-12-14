@@ -10,9 +10,9 @@
     "create-brightspace-ui": "./dist/create.js"
   },
   "scripts": {
-    "lint": "npm run lint:eslint",
+    "build": "rm -rf dist && babel src --out-dir dist --copy-files --include-dotfiles",
     "lint:eslint": "eslint . --ext .js,.html",
-    "build": "rm -rf dist && babel src --out-dir dist --copy-files --include-dotfiles"
+    "test": "npm run lint:eslint"
   },
   "files": [
     "dist"
