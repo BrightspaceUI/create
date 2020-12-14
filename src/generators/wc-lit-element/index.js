@@ -13,11 +13,11 @@ export function run(templateData) {
 		templateDataElement.localizeMixin = '';
 		templateDataElement.localizeResources = '';
 	}
-	replaceText(`${__dirname}/templates/configured/_element.js`, templateDataElement);
 	copyFile(
 		`${__dirname}/templates/configured/_element.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, templateDataElement);
 
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

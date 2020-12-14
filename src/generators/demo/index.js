@@ -10,9 +10,9 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
-	replaceText(`${__dirname}/templates/index.html`, templateData);
 	copyFile(
 		`${__dirname}/templates/index.html`,
 		`${getDestinationPath(templateData.hyphenatedName)}/demo/index.html`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/demo/index.html`, templateData);
 }

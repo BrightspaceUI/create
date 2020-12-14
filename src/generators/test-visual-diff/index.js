@@ -10,17 +10,17 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
 
-	replaceText(`${__dirname}/templates/_element.visual-diff.js`, templateData);
 	copyFile(
 		`${__dirname}/templates/_element.visual-diff.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.js`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.js`, templateData);
 
-	replaceText(`${__dirname}/templates/_element.visual-diff.html`, templateData);
 	copyFile(
 		`${__dirname}/templates/_element.visual-diff.html`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.html`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.html`, templateData);
 
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

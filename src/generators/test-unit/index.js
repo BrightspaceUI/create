@@ -10,11 +10,11 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
-	replaceText(`${__dirname}/templates/configured/_element.test.js`, templateData);
 	copyFile(
 		`${__dirname}/templates/configured/_element.test.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`, templateData);
 
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
