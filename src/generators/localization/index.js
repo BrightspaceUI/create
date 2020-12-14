@@ -36,10 +36,10 @@ export function run(templateData) {
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, replacements);
 
 	if (templateData.localizationType === 'serge') {
-		replaceText(`${__dirname}/templates/configured/_element.serge.json`, templateData);
 		copyFile(
 			`${__dirname}/templates/configured/_element.serge.json`,
 			`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.serge.json`
 		);
+		replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.serge.json`, templateData);
 	}
 }

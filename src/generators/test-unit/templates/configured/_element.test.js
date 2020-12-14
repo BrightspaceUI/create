@@ -5,7 +5,7 @@ import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-help
 describe('<%= className %>', () => {
 
 	describe('accessibility', () => {
-		it('should pass all axe tests', async() => {
+		it('should pass all aXe tests', async() => {
 			const el = await fixture(html`<<%= tagName %>></<%= tagName %>>`);
 			await expect(el).to.be.accessible();
 		});

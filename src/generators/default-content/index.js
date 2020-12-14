@@ -4,11 +4,11 @@ export function run(templateData) {
 
 	const replacementsPackage = templateData;
 	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/locales"' : '';
-	replaceText(`${__dirname}/templates/configured/_package.json`, replacementsPackage);
 	copyFile(
 		`${__dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/package.json`, replacementsPackage);
 
 	const replacementsREADME = templateData;
 	replacementsREADME.labsChecklist = templateData.org === 'labs' ? `\n> Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
@@ -26,25 +26,25 @@ export function run(templateData) {
 > - [ ] README documentation\n` : '';
 
 	if (templateData.description) replacementsREADME.description = `\n${templateData.description}\n`;
-	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
 	copyFile(
 		`${__dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/README.md`, replacementsREADME);
 
 	if (templateData.codeowners) {
-		replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
 		copyFile(
 			`${__dirname}/templates/configured/_CODEOWNERS`,
 			`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
 		);
+		replaceText(`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`, { codeowners: templateData.codeowners });
 	}
 
-	replaceText(`${__dirname}/templates/configured/LICENSE`, { year: new Date().getFullYear().toString() });
 	copyFile(
 		`${__dirname}/templates/configured/LICENSE`,
 		`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`
 	);
+	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`, { year: new Date().getFullYear().toString() });
 
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
