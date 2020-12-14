@@ -57,8 +57,17 @@ export function copyFile(source, destination) {
 
 export function copyFilesInDir(sourceDir, destinationDir) {
 	const files = fs.readdirSync(sourceDir);
-	files.forEach(file => {
-		fs.copyFileSync(`${sourceDir}/${file}`, `${destinationDir}/${file}`);
+	files.forEach((file) => {
+		const curSource = path.join(sourceDir, file);
+		if (fs.lstatSync(curSource).isDirectory()) {
+			const targetFolder = path.join(destinationDir, path.basename(curSource));
+			if (!fs.existsSync(targetFolder)) {
+				fs.mkdirSync(targetFolder);
+			}
+			copyFilesInDir(curSource, targetFolder);
+		} else {
+			copyFile(curSource, path.join(destinationDir, file));
+		}
 	});
 }
 

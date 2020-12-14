@@ -16,15 +16,5 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`
 	);
 
-	copyFile(
-		`${__dirname}/templates/configured/.eslintrc.json`,
-		`${getDestinationPath(templateData.hyphenatedName)}/test/.eslintrc.json`
-	);
-
-	copyFile(
-		`${__dirname}/templates/configured/ci.yml`,
-		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/ci.yml`
-	);
-
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

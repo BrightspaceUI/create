@@ -1,4 +1,4 @@
-import { copyFile, getDestinationPath, mergeText, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, mergeText, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeText(
@@ -8,10 +8,6 @@ export function run(templateData) {
 	mergeText(
 		`${__dirname}/templates/.gitignore`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
-	);
-	copyFile(
-		`${__dirname}/templates/visual-diff.yml`,
-		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/visual-diff.yml`
 	);
 
 	replaceText(`${__dirname}/templates/_element.visual-diff.js`, templateData);
@@ -25,4 +21,6 @@ export function run(templateData) {
 		`${__dirname}/templates/_element.visual-diff.html`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.visual-diff.html`
 	);
+
+	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
