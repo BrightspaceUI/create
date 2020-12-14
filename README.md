@@ -20,6 +20,7 @@ npm init @brightspace-ui
 * Linting (JavaScript, Style, Lit)
 * Unit tests with SauceLabs cross-browser testing
 * Continuous Integration using GitHub Actions
+* Dependabot
 * Publish to NPM
 
 ### Optional
@@ -38,8 +39,6 @@ Visual diff results are published to a bucket in S3 and need special tokens to d
 ## Developing and Contributing
 
 TODO:
-* [ ] Dependabot
-* [x] GitHub Actions integration for visual-diff
 * [ ] GitHub Actions integration for verify-translations
 * [ ] Switch to @web/dev-server
 * [ ] Switch to @web testing stuff
