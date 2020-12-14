@@ -46,10 +46,5 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`
 	);
 
-	copyFile(
-		`${__dirname}/templates/configured/dependabot.yml`,
-		`${getDestinationPath(templateData.hyphenatedName)}/.github/dependabot.yml`
-	);
-
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
