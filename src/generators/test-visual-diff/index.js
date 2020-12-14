@@ -6,7 +6,7 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 	mergeText(
-		`${__dirname}/templates/.gitignore`,
+		`${__dirname}/templates/_gitignore`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
 

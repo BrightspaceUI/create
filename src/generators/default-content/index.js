@@ -46,5 +46,10 @@ export function run(templateData) {
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`, { year: new Date().getFullYear().toString() });
 
+	copyFile(
+		`${__dirname}/templates/configured/_gitignore`,
+		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
+	);
+
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
