@@ -1,4 +1,4 @@
-import { getDestinationPath, mergeJSON, mergeText, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, mergeJSON, mergeText, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeJSON(
@@ -11,20 +11,20 @@ export function run(templateData) {
 	);
 
 	replaceText(`${__dirname}/templates/configured/_element.test.js`, templateData);
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/_element.test.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`
 	);
 
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/.eslintrc.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/.eslintrc.json`
 	);
 
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/ci.yml`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.github/workflows/ci.yml`
 	);
 
-	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }

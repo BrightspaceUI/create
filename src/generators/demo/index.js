@@ -1,4 +1,4 @@
-import { getDestinationPath, mergeJSON, mergeText, moveFile, replaceText } from '../../helper.js';
+import { copyFile, getDestinationPath, mergeJSON, mergeText, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 	mergeJSON(
@@ -11,7 +11,7 @@ export function run(templateData) {
 	);
 
 	replaceText(`${__dirname}/templates/index.html`, templateData);
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/index.html`,
 		`${getDestinationPath(templateData.hyphenatedName)}/demo/index.html`
 	);

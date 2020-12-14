@@ -1,11 +1,11 @@
-import { getDestinationPath, moveFile, moveFilesInDir, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, replaceText } from '../../helper.js';
 
 export function run(templateData) {
 
 	const replacementsPackage = templateData;
 	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/locales"' : '';
 	replaceText(`${__dirname}/templates/configured/_package.json`, replacementsPackage);
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
@@ -27,24 +27,24 @@ export function run(templateData) {
 
 	if (templateData.description) replacementsREADME.description = `\n${templateData.description}\n`;
 	replaceText(`${__dirname}/templates/configured/_README.md`, replacementsREADME);
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 
 	if (templateData.codeowners) {
 		replaceText(`${__dirname}/templates/configured/_CODEOWNERS`, { codeowners: templateData.codeowners });
-		moveFile(
+		copyFile(
 			`${__dirname}/templates/configured/_CODEOWNERS`,
 			`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
 		);
 	}
 
 	replaceText(`${__dirname}/templates/configured/LICENSE`, { year: new Date().getFullYear().toString() });
-	moveFile(
+	copyFile(
 		`${__dirname}/templates/configured/LICENSE`,
 		`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`
 	);
 
-	moveFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
