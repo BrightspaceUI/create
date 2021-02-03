@@ -36,7 +36,7 @@ module.exports = config => {
 				//
 				// npm run test -- --grep test/foo/bar.test.js
 				// npm run test -- --grep test/bar/*
-				'test/resize-observer-test-error-handler.js',
+				'node_modules/@brightspace-ui/core/tools/resize-observer-test-error-handler.js',
 				{ pattern: config.grep ? config.grep : 'test/*.test.js', type: 'module' },
 			],
 			// see the karma-esm docs for all options
