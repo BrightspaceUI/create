@@ -17,6 +17,11 @@ const staticLocalization = `\n\tstatic async getLocalizeResources(langs) {
 
 		return null;
 	}\n`;
+const dynamicLocalization = `\n\tstatic get localizeConfig() {
+		return {
+			importFunc: async lang => (await import(\`./lang/\${lang}.js\`)).default
+		};
+	}\n`;
 
 export function run(templateData) {
 	const replacements = {
@@ -27,9 +32,9 @@ export function run(templateData) {
 		replacements.localizeMixin = 'import { LocalizeMixin } from \'@brightspace-ui/core/mixins/localize-mixin.js\';\n';
 		replacements.localizeResources = staticLocalization;
 	} else {
-		replacements.extends = 'LocalizeElement(LitElement)';
-		replacements.localizeMixin = 'import { LocalizeElement } from \'./locales/localize-element.js\';\n';
-		replacements.localizeResources = '';
+		replacements.extends = 'LocalizeDynamicMixin(LitElement)';
+		replacements.localizeMixin = 'import { LocalizeDynamicMixin } from \'@brightspace-ui/core/mixins/localize-dynamic-mixin.js\';\n';
+		replacements.localizeResources = dynamicLocalization;
 
 		copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 	}
