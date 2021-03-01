@@ -39,7 +39,7 @@ async function getOptions() {
 		{
 			type: 'text',
 			name: 'codeowners',
-			message: 'What is/are the github username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
+			message: 'What is/are the GitHub username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
 		},
 		{
 			type: 'select',
@@ -64,9 +64,9 @@ async function getOptions() {
 			name: 'localizationType',
 			message: 'What type of localization would you like?',
 			choices: [
-				{ title: 'Static', value: 'static' },
 				{ title: 'Dynamic (no serge)', value: 'dynamic' },
-				{ title: 'Dynamic (yes serge)', value: 'serge' }
+				{ title: 'Dynamic (yes serge)', value: 'serge' },
+				{ title: 'Static', value: 'static' }
 			]
 		},
 	];
