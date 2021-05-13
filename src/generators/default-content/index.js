@@ -3,7 +3,7 @@ import { copyFile, copyFilesInDir, getDestinationPath, replaceText } from '../..
 export function run(templateData) {
 
 	const replacementsPackage = templateData;
-	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/locales"' : '';
+	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/lang"' : '';
 	copyFile(
 		`${__dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
