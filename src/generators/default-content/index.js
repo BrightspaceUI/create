@@ -3,7 +3,15 @@ import { copyFile, copyFilesInDir, getDestinationPath, replaceText } from '../..
 export function run(templateData) {
 
 	const replacementsPackage = templateData;
-	replacementsPackage.locales = templateData.localization && templateData.localizationType !== 'static' ? ',\n"/lang"' : '';
+	replacementsPackage.locales = '';
+	if (templateData.localization) {
+		if (templateData.localizationType === 'serge') {
+			replacementsPackage.locales += `,\n"${templateData.hyphenatedName}.serge.json"`;
+		}
+		if (templateData.localizationType !== 'static') {
+			replacementsPackage.locales += ',\n"/lang"';
+		}
+	}
 	copyFile(
 		`${__dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
