@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { css, html, LitElement } from 'lit-element';
 <%= localizeMixin %>
 class <%= className %> extends <%= extends %> {
 
@@ -18,17 +18,18 @@ class <%= className %> extends <%= extends %> {
 			}
 		`;
 	}
-
+<%= localizeResourcesStatic %>
 	constructor() {
 		super();
 
 		this.prop1 = '<%= hyphenatedName %>';
 	}
-<%= localizeResources %>
+<%= localizeResourcesDynamic %>
 	render() {
 		return html`
 			<h2><%= localizeDemo %> ${this.prop1}!</h2>
 		`;
 	}
+
 }
 customElements.define('<%= tagName %>', <%= className %>);

@@ -30,11 +30,13 @@ export function run(templateData) {
 	if (templateData.localizationType === 'static') {
 		replacements.extends = 'LocalizeMixin(LitElement)';
 		replacements.localizeMixin = 'import { LocalizeMixin } from \'@brightspace-ui/core/mixins/localize-mixin.js\';\n';
-		replacements.localizeResources = staticLocalization;
+		replacements.localizeResourcesDynamic = '';
+		replacements.localizeResourcesStatic = staticLocalization;
 	} else {
 		replacements.extends = 'LocalizeDynamicMixin(LitElement)';
 		replacements.localizeMixin = 'import { LocalizeDynamicMixin } from \'@brightspace-ui/core/mixins/localize-dynamic-mixin.js\';\n';
-		replacements.localizeResources = dynamicLocalization;
+		replacements.localizeResourcesDynamic = dynamicLocalization;
+		replacements.localizeResourcesStatic = '';
 
 		copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 	}
