@@ -2,13 +2,13 @@
 
 /* eslint-disable no-console */
 import prompts from 'prompts';
-import { run as setupDefaultContent } from './generators/default-content';
-import { run as setupDemo } from './generators/demo';
-import { run as setupElement } from './generators/wc-lit-element';
-import { run as setupLocalization } from './generators/localization';
-import { run as setupRelease } from './generators/release';
-import { run as setupTestUnit } from './generators/test-unit';
-import { run as setupTestVisualDiff } from './generators/test-visual-diff';
+import { run as setupDefaultContent } from './generators/default-content/index.js';
+import { run as setupDemo } from './generators/demo/index.js';
+import { run as setupElement } from './generators/wc-lit-element/index.js';
+import { run as setupLocalization } from './generators/localization/index.js';
+import { run as setupRelease } from './generators/release/index.js';
+import { run as setupTestUnit } from './generators/test-unit/index.js';
+import { run as setupTestVisualDiff } from './generators/test-visual-diff/index.js';
 
 function getClassName(hyphenatedName) {
 	const hyphenRemoved = hyphenatedName.replace(/-([a-z])/g, (g) => { return g[1].toUpperCase(); });
