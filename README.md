@@ -42,7 +42,8 @@ Visual diff results are published to a bucket in S3 and need special tokens to d
 
 In order for the release workflow to automatically update the version, you need to add brightspace-bot as an admin using the following steps:
 Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
-\Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/master/docs/branch-protection.md).
+
+Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/master/docs/branch-protection.md).
 
 ## Developing and Contributing
 
