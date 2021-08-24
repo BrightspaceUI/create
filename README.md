@@ -34,6 +34,9 @@ npm init @brightspace-ui
 
 ## Additional Setup
 
+Add brightspace-bot as an admin so the version can automatically be updated:
+Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
+
 ### Visual Diff Testing
 
 Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visual-diff GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/visual-diff).
@@ -54,9 +57,6 @@ Pull requests welcome!
 The [sematic-release GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/semantic-release) is called from the `release.yml` GitHub Action workflow to handle version changes and releasing.
 
 ### Version Changes
-
-Add brightspace-bot as an admin so the version can automatically be updated:
-Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
 
 All version changes should obey [semantic versioning](https://semver.org/) rules:
 1. **MAJOR** version when you make incompatible API changes,
