@@ -55,6 +55,9 @@ The [sematic-release GitHub Action](https://github.com/BrightspaceUI/actions/tre
 
 ### Version Changes
 
+Add brightspace-bot as an admin so the version can automatically be updated:
+Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
+
 All version changes should obey [semantic versioning](https://semver.org/) rules:
 1. **MAJOR** version when you make incompatible API changes,
 2. **MINOR** version when you add functionality in a backwards compatible manner, and
