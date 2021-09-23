@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui/create",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Initializer for Brightspace web components",
   "repository": "https://github.com/BrightspaceUI/create.git",
   "publishConfig": {
