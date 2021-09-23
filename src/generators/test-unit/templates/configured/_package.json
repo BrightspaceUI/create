@@ -1,16 +1,15 @@
 {
   "scripts": {
     "test": "npm run lint && npm run test:headless",
-    "test:headless": "karma start",
-    "test:headless:watch": "karma start --auto-watch=true --single-run=false"
+    "test:headless": "web-test-runner",
+    "test:headless:watch": "web-test-runner --watch"
   },
   "dependencies": {
     "@brightspace-ui/core": "^1"
   },
   "devDependencies": {
     "@open-wc/testing": "^2",
-    "@open-wc/testing-karma": "^4",
-    "deepmerge": "^4",
-    "karma-sauce-launcher": "^4"
+    "@web/test-runner": "^0.13",
+    "@web/test-runner-saucelabs": "^0.6"
   }
 }
