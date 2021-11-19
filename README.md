@@ -36,14 +36,14 @@ npm init @brightspace-ui
 
 ### Visual Diff Testing
 
-Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visual-diff GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/visual-diff).
+Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visual-diff GitHub Action](https://github.com/BrightspaceUI/actions/tree/main/visual-diff).
 
 ### Semantic Release
 
 In order for the release workflow to automatically update the version, you need to add brightspace-bot as an admin using the following steps:
 Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
 
-Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/master/docs/branch-protection.md).
+Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/branch-protection.md).
 
 ## Developing and Contributing
 
@@ -58,7 +58,7 @@ Pull requests welcome!
 
 > TL;DR: Commits prefixed with `fix:` and `feat:` will trigger patch and minor releases when merged to `main`. Read on for more details...
 
-The [sematic-release GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/semantic-release) is called from the `release.yml` GitHub Action workflow to handle version changes and releasing.
+The [sematic-release GitHub Action](https://github.com/BrightspaceUI/actions/tree/main/semantic-release) is called from the `release.yml` GitHub Action workflow to handle version changes and releasing.
 
 ### Version Changes
 
