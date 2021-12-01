@@ -1,6 +1,7 @@
 {
   "name": "<%= packageName %>",
   "description": "<%= description %>",
+  "type": "module",
   "repository": "https://github.com/<%= githubOrg %>/<%= hyphenatedName %>.git",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:style",

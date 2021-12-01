@@ -1,9 +1,9 @@
 import puppeteer from 'puppeteer';
-import VisualDiff from '@brightspace-ui/visual-diff';
+import { VisualDiff } from '@brightspace-ui/visual-diff';
 
 describe('<%= tagName %>', () => {
 
-	const visualDiff = new VisualDiff('<%= hyphenatedName %>', __dirname);
+	const visualDiff = new VisualDiff('<%= hyphenatedName %>', import.meta.url);
 
 	let browser, page;
 
