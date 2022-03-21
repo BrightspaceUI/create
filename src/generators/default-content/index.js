@@ -43,9 +43,9 @@ export function run(templateData) {
 	if (templateData.codeowners) {
 		copyFile(
 			`${__dirname}/templates/configured/_CODEOWNERS`,
-			`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`
+			`${getDestinationPath(templateData.hyphenatedName)}/.github/CODEOWNERS`
 		);
-		replaceText(`${getDestinationPath(templateData.hyphenatedName)}/CODEOWNERS`, { codeowners: templateData.codeowners });
+		replaceText(`${getDestinationPath(templateData.hyphenatedName)}/.github/CODEOWNERS`, { codeowners: templateData.codeowners });
 	}
 
 	copyFile(
