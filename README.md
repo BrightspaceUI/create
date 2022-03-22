@@ -17,10 +17,10 @@ npm init @brightspace-ui
 ### Default
 
 * Project boilerplate including: README, .editorconfig, .gitignore, package.json, CODEOWNERS and LICENSE (Apache-2.0)
-* LitElement component scaffold
+* Lit component scaffold
 * Demo
 * Linting (JavaScript, Style, Lit)
-* Unit tests with SauceLabs cross-browser testing
+* Unit tests with cross-browser testing
 * Continuous Integration using GitHub Actions
 * Dependabot
 * Publish to NPM
