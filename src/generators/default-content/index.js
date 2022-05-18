@@ -19,7 +19,7 @@ export function run(templateData) {
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/package.json`, replacementsPackage);
 
 	const replacementsREADME = templateData;
-	replacementsREADME.labsChecklist = templateData.org === 'labs' ? `\n> Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
+	replacementsREADME.labsChecklist = templateData.org === 'labs' ? `\n> Note: this is a ["labs" component](https://daylight.d2l.dev/developing/getting-started/component-tiers/). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
 >
 > - [ ] [Design organization buy-in](https://daylight.d2l.dev/developing/creating-component/before-building/#working-with-design)
 > - [ ] [Architectural sign-off](https://daylight.d2l.dev/developing/creating-component/before-building/#web-component-architecture)
