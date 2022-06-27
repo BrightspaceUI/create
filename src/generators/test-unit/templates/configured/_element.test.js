@@ -1,5 +1,6 @@
 import '../<%= hyphenatedName %>.js';
 import { expect, fixture, html } from '@open-wc/testing';
+import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('<%= className %>', () => {
 
@@ -8,15 +9,12 @@ describe('<%= className %>', () => {
 			const el = await fixture(html`<<%= tagName %>></<%= tagName %>>`);
 			await expect(el).to.be.accessible();
 		});
+	});
 
-		describe('constructor', () => {
-			it('should construct', () => {
-				const ctor = customElements.get('<%= tagName %>');
-				expect(ctor).to.not.be.undefined;
-				document.createElement('<%= tagName %>');
-			});
+	describe('constructor', () => {
+		it('should construct', () => {
+			runConstructor('<%= tagName %>');
 		});
-
 	});
 
 });
