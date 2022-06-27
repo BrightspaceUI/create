@@ -8,6 +8,15 @@ describe('<%= className %>', () => {
 			const el = await fixture(html`<<%= tagName %>></<%= tagName %>>`);
 			await expect(el).to.be.accessible();
 		});
+
+		describe('constructor', () => {
+			it('should construct', () => {
+				const ctor = customElements.get('<%= tagName %>');
+				expect(ctor).to.not.be.undefined;
+				document.createElement('<%= tagName %>');
+			});
+		});
+
 	});
 
 });
