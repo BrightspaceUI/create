@@ -1,11 +1,8 @@
 {
   "scripts": {
     "test": "npm run lint && npm run test:headless",
-    "test:headless": "web-test-runner",
-    "test:headless:watch": "web-test-runner --watch"
-  },
-  "dependencies": {
-    "@brightspace-ui/core": "^2"
+    "test:headless": "web-test-runner --files ./test/*.test.js --node-resolve",
+    "test:headless:watch": "web-test-runner --files ./test/*.test.js --node-resolve --watch"
   },
   "devDependencies": {
     "@open-wc/testing": "^3",
