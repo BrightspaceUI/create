@@ -11,8 +11,7 @@ export function run(templateData) {
 		templateDataElement.extends = 'LitElement';
 		templateDataElement.localizeDemo = 'Hello';
 		templateDataElement.localizeMixin = '';
-		templateDataElement.localizeResourcesDynamic = '';
-		templateDataElement.localizeResourcesStatic = '';
+		templateDataElement.localizeResources = '';
 	}
 	copyFile(
 		`${__dirname}/templates/configured/_element.js`,

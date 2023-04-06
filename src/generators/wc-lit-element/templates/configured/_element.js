@@ -18,13 +18,13 @@ class <%= className %> extends <%= extends %> {
 			}
 		`;
 	}
-<%= localizeResourcesStatic %>
+
 	constructor() {
 		super();
 
 		this.prop1 = '<%= hyphenatedName %>';
 	}
-<%= localizeResourcesDynamic %>
+<%= localizeResources %>
 	render() {
 		return html`
 			<h2><%= localizeDemo %> ${this.prop1}!</h2>

@@ -5,12 +5,7 @@ export function run(templateData) {
 	const replacementsPackage = templateData;
 	replacementsPackage.locales = '';
 	if (templateData.localization) {
-		if (templateData.localizationType === 'serge') {
-			replacementsPackage.locales += `,\n"${templateData.hyphenatedName}.serge.json"`;
-		}
-		if (templateData.localizationType !== 'static') {
-			replacementsPackage.locales += ',\n"/lang"';
-		}
+		replacementsPackage.locales += `,\n"${templateData.hyphenatedName}.serge.json"`;
 	}
 	copyFile(
 		`${__dirname}/templates/configured/_package.json`,
