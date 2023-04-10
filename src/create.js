@@ -59,16 +59,6 @@ async function getOptions() {
 				{ title: 'No', value: false }
 			]
 		},
-		{
-			type: (_, all) => { return all.localization === true ? 'select' : null; },
-			name: 'localizationType',
-			message: 'What type of localization would you like?',
-			choices: [
-				{ title: 'Dynamic (no serge)', value: 'dynamic' },
-				{ title: 'Dynamic (yes serge)', value: 'serge' },
-				{ title: 'Static', value: 'static' }
-			]
-		},
 	];
 	return await prompts(questions, {
 		onCancel: () => {

@@ -27,7 +27,7 @@ npm init @brightspace-ui
 
 ### Optional
 
-* Localization (static or dynamic with optional Serge config)
+* Localization
 * Visual diff testing*
 
 \* Some additional setup required (see below)
