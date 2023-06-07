@@ -4,18 +4,16 @@
   "type": "module",
   "repository": "https://github.com/<%= githubOrg %>/<%= hyphenatedName %>.git",
   "scripts": {
-    "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:style",
+    "lint": "npm run lint:eslint && npm run lint:style",
     "lint:eslint": "eslint . --ext .js,.html",
-    "lint:lit": "lit-analyzer <%= hyphenatedName %>.js --strict",
     "lint:style": "stylelint \"**/*.{js,html}\""
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/stylelint-config": "^0.7",
+    "@brightspace-ui/stylelint-config": "^0.8",
     "eslint": "^8",
     "eslint-config-brightspace": "^0.23",
-    "lit-analyzer": "^1",
     "stylelint": "^15"
   },
   "files": [
