@@ -3,6 +3,6 @@
     "start": "web-dev-server --app-index demo/index.html --node-resolve --open --watch"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.1"
+    "@web/dev-server": "^0.3"
   }
 }
