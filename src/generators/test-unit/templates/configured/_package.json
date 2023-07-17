@@ -9,6 +9,6 @@
   },
   "devDependencies": {
     "@open-wc/testing": "^3",
-    "@web/test-runner": "^0.15"
+    "@web/test-runner": "^0.17"
   }
 }
