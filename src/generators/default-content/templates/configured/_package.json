@@ -13,7 +13,7 @@
   "devDependencies": {
     "@brightspace-ui/stylelint-config": "^0.8",
     "eslint": "^8",
-    "eslint-config-brightspace": "^0.24",
+    "eslint-config-brightspace": "^0.25",
     "stylelint": "^15"
   },
   "files": [
