@@ -33,19 +33,6 @@ To make your usage of `<%= tagName %>` accessible, use the following properties 
 |--|--|
 | | |
 
-## Developing, Testing and Contributing
+## Developing and Contributing
 
 After cloning the repo, run `npm install` to install dependencies.
-
-### Linting
-
-```shell
-# eslint and stylelint
-npm run lint
-
-# eslint only
-npm run lint:eslint
-
-# stylelint only
-npm run lint:style
-```
