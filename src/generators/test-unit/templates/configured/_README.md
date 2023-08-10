@@ -1,13 +1,21 @@
 
 ### Testing
 
+To run the full suite of tests:
+
 ```shell
-# lint & run headless unit tests
 npm test
+```
 
-# unit tests only
+Alternatively, tests can be selectively run:
+
+```shell
+# eslint
+npm run lint:eslint
+
+# stylelint
+npm run lint:style
+
+# unit tests
 npm run test:headless
-
-# debug or run a subset of local unit tests
-npm run test:headless:watch
 ```
