@@ -6,15 +6,16 @@
 			import '@brightspace-ui/core/components/demo/demo-page.js';
 			import '../<%= hyphenatedName %>.js';
 		</script>
-		<title><%= className %></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body unresolved>
 		<d2l-demo-page page-title="<%= className %>">
 			<h2><%= className %></h2>
 			<d2l-demo-snippet>
-				<<%= tagName %>></<%= tagName %>>
+				<template>
+					<<%= tagName %>></<%= tagName %>>
+				</template>
 			</d2l-demo-snippet>
 		</d2l-demo-page>
 	</body>
