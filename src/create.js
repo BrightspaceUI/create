@@ -8,7 +8,7 @@ import { run as setupElement } from './generators/wc-lit-element/index.js';
 import { run as setupLocalization } from './generators/localization/index.js';
 import { run as setupRelease } from './generators/release/index.js';
 import { run as setupTestUnit } from './generators/test-unit/index.js';
-import { run as setupTestVisualDiff } from './generators/test-visual-diff/index.js';
+import { run as setupTestVdiff } from './generators/test-vdiff/index.js';
 
 function getClassName(hyphenatedName) {
 	const hyphenRemoved = hyphenatedName.replace(/-([a-z])/g, (g) => { return g[1].toUpperCase(); });
@@ -43,8 +43,8 @@ async function getOptions() {
 		},
 		{
 			type: 'select',
-			name: 'visualDiff',
-			message: 'Would you like visual-diff tests set up?',
+			name: 'vdiff',
+			message: 'Would you like vdiff tests set up?',
 			choices: [
 				{ title: 'Yes', value: true },
 				{ title: 'No', value: false }
@@ -87,7 +87,7 @@ async function executeGenerator() {
 	setupDefaultContent(options);
 	setupElement(options);
 	setupTestUnit(options);
-	if (options.visualDiff) setupTestVisualDiff(options);
+	if (options.vdiff) setupTestVdiff(options);
 	setupDemo(options);
 	if (options.localization) setupLocalization(options);
 	setupRelease(options);

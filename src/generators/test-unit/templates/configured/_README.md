@@ -17,5 +17,5 @@ npm run lint:eslint
 npm run lint:style
 
 # unit tests
-npm run test:headless
+npm run test:unit
 ```
