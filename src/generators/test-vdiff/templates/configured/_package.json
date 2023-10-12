@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "test:vdiff": "d2l-test-runner vdiff"
+  }
+}
