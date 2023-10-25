@@ -1,9 +1,3 @@
 {
-  "extends": "brightspace/lit-config",
-  "overrides": [{
-    "files": "./lang/*.js",
-    "rules": {
-      "quotes": 0
-    }
-  }]
+  "extends": "brightspace/lit-config"
 }
