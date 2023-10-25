@@ -8,7 +8,8 @@ export function run(templateData) {
 		localizeMixin: 'import { LocalizeMixin } from \'@brightspace-ui/core/mixins/localize/localize-mixin.js\';\n',
 		localizeResources: `\n\tstatic get localizeConfig() {
 		return {
-			importFunc: async lang => (await import(\`./lang/\${lang}.js\`)).default
+			importFunc: async lang => (await import(\`./lang/\${lang}.js\`)).default,
+			osloCollection: '@brightspace-ui\\\\${templateData.hyphenatedName}\\\\${templateData.hyphenatedName}'
 		};
 	}\n`
 	};
