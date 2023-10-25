@@ -1,3 +1,3 @@
 export default {
-	"hello": "Olá"
+	"hello": "Kia ora"
 };
