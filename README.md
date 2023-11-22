@@ -36,14 +36,13 @@ npm init @brightspace-ui
 
 ### Visual Diff Testing
 
-Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [visual-diff GitHub Action](https://github.com/BrightspaceUI/actions/tree/main/visual-diff).
+Visual diff results are published to a bucket in S3 and need special tokens to do so. To set these up, follow the instructions in the [vdiff GitHub Action](https://github.com/BrightspaceUI/actions/tree/main/vdiff).
 
 ### Semantic Release
 
-In order for the release workflow to automatically update the version, you need to add `brightspace-bot` as an admin using the following steps:
-Settings -> Manage access -> Invite teams or people -> Add brightspace-bot
+In order for the release workflow to automatically update the version, the repo needs to be configured with a `D2L_RELEASE_TOKEN`.
 
-Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/branch-protection.md).
+Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/release-token.md).
 
 ## Developing and Contributing
 
