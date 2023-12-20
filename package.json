@@ -30,6 +30,6 @@
     "babel-eslint": "^10",
     "babel-plugin-transform-dynamic-import": "^2",
     "eslint": "^8",
-    "eslint-config-brightspace": "^0.25"
+    "eslint-config-brightspace": "^1"
   }
 }
