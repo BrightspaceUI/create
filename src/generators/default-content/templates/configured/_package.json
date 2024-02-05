@@ -11,10 +11,10 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/stylelint-config": "^0.8",
+    "@brightspace-ui/stylelint-config": "^1",
     "eslint": "^8",
     "eslint-config-brightspace": "^1",
-    "stylelint": "^15"
+    "stylelint": "^16"
   },
   "files": [
     "<%= hyphenatedName %>.js"<%= locales %>
