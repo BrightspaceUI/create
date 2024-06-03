@@ -10,7 +10,7 @@
     "create-brightspace-ui": "./dist/create.js"
   },
   "scripts": {
-    "build": "rm -rf dist && babel src --out-dir dist --copy-files --include-dotfiles",
+    "build": "rimraf dist && babel src --out-dir dist --copy-files --include-dotfiles",
     "lint:eslint": "eslint . --ext .js,.html",
     "test": "npm run lint:eslint"
   },
@@ -30,6 +30,7 @@
     "babel-eslint": "^10",
     "babel-plugin-transform-dynamic-import": "^2",
     "eslint": "^8",
-    "eslint-config-brightspace": "^1"
+    "eslint-config-brightspace": "^1",
+    "rimraf": "^5.0.7"
   }
 }
