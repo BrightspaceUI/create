@@ -167,7 +167,7 @@ export function replaceTextPlugin(perFileReplacements = {}) {
 				const { relativePath, fileName } = context;
 				const replacements = normalizedPerFileReplacements[path.join(relativePath, fileName)];
 				if (replacements) {
-					replaceText(destination, replacements)
+					replaceText(destination, replacements);
 				}
 			}
 		};

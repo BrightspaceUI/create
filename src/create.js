@@ -2,6 +2,7 @@
 
 /* eslint-disable no-console */
 import prompts from 'prompts';
+import { run as setupD2ldev } from './generators/d2ldev/index.js';
 import { run as setupDefaultContent } from './generators/default-content/index.js';
 import { run as setupDemo } from './generators/demo/index.js';
 import { run as setupElement } from './generators/wc-lit-element/index.js';
@@ -9,7 +10,6 @@ import { run as setupLocalization } from './generators/localization/index.js';
 import { run as setupRelease } from './generators/release/index.js';
 import { run as setupTestUnit } from './generators/test-unit/index.js';
 import { run as setupTestVdiff } from './generators/test-vdiff/index.js';
-import { run as setupD2ldev } from './generators/d2ldev/index.js';
 
 const generatorTypes = {
 	component: 'component',

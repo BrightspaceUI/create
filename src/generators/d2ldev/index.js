@@ -1,5 +1,10 @@
+import {
+	copyAndProcessDir,
+	getDestinationPath,
+	movePlugin,
+	replaceTextPlugin
+} from '../../helper.js';
 import path from 'path';
-import { copyAndProcessDir, getDestinationPath, replaceTextPlugin, movePlugin } from '../../helper.js';
 
 export function run(templateData) {
 	const templateRoot = path.join(__dirname, 'templates');
