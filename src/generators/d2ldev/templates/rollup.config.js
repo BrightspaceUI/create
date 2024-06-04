@@ -1,3 +1,4 @@
+import { babel } from '@rollup/plugin-babel';
 import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
@@ -24,6 +25,7 @@ export default {
             },
         }),
         resolve(),
+        babel({ babelHelpers: 'bundled' }),
         html({
             minify: true,
             input: './src/index.html',

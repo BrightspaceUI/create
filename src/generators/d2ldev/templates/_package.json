@@ -15,6 +15,8 @@
     "lit": "^3"
   },
   "devDependencies": {
+    "@brightspace-ui/browserslist-config": "^1",
+    "@rollup/plugin-babel": "^6",
     "@rollup/plugin-dynamic-import-vars": "^2",
     "@rollup/plugin-node-resolve": "^15",
     "@rollup/plugin-replace": "^5",

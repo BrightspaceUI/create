@@ -15,6 +15,7 @@ export function run(templateData) {
 		movePlugin({
 			'_package.json': 'package.json',
 			'_gitignore': '.gitignore',
+			'_browserslistrc': '.browserslistrc',
 			'_CODEOWNERS': 'CODEOWNERS',
 			'_README.md': 'README.md',
 			'src/components/_element.js': `src/components/${elementFile}`
