@@ -164,15 +164,6 @@ async function executeD2ldevSiteGenerator() {
 			message: 'What would you like to name your app? Use hyphenation instead of camelcase.'
 		},
 		{
-			type: 'select',
-			name: 'githubOrg',
-			message: 'Which GitHub org will the repo be in?',
-			choices: [
-				{ title: 'Brightspace', value: 'Brightspace' },
-				{ title: 'BrightspaceUI', value: 'BrightspaceUI' }
-			]
-		},
-		{
 			type: 'text',
 			name: 'subdomain',
 			message: 'What is the d2l.dev subdomain you want to publish this app to?'
@@ -199,7 +190,6 @@ async function executeD2ldevSiteGenerator() {
 		hyphenatedName,
 		className: getClassName(options.hyphenatedName),
 		tagName: `d2l-${hyphenatedName}`,
-		githubOrg: options.githubOrg,
 		repoName: hyphenatedName,
 		subdomain: options.subdomain,
 		description: options.description,

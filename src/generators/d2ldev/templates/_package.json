@@ -2,7 +2,7 @@
   "name": "<%= hyphenatedName %>",
   "description": "<%= description %>",
   "type": "module",
-  "repository": "https://github.com/<%= githubOrg %>/<%= repoName %>.git",
+  "repository": "https://github.com/Brightspace/<%= repoName %>.git",
   "scripts": {
     "start": "web-dev-server --watch",
     "build": "rimraf dist && rollup -c rollup.config.js"
