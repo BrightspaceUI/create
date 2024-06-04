@@ -9,4 +9,4 @@
 
 ## Releasing
 
-After merging your code changes to the `main` branch, the `Publish` Github action will run and publish your changes to [<%= subdomain %>.d2l.dev](https://<%= subdomain %>.d2l.dev/).
+After merging your code changes to the `main` branch, the `Publish` Github action will run and publish your changes<%= releaseTargetMessage %>.

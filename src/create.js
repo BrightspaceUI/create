@@ -2,18 +2,18 @@
 
 /* eslint-disable no-console */
 import prompts from 'prompts';
-import { run as setupD2ldev } from './generators/d2ldev/index.js';
 import { run as setupDefaultContent } from './generators/default-content/index.js';
 import { run as setupDemo } from './generators/demo/index.js';
 import { run as setupElement } from './generators/wc-lit-element/index.js';
 import { run as setupLocalization } from './generators/localization/index.js';
 import { run as setupRelease } from './generators/release/index.js';
+import { run as setupStaticSite } from './generators/static-site/index.js';
 import { run as setupTestUnit } from './generators/test-unit/index.js';
 import { run as setupTestVdiff } from './generators/test-vdiff/index.js';
 
 const generatorTypes = {
 	component: 'component',
-	d2ldevSite: 'd2ldevSite',
+	staticSite: 'staticSite',
 	bsiApp: 'bsiApp'
 };
 
@@ -24,7 +24,7 @@ const projectTypes = {
 
 const applicationTypes = {
 	bsi: 'bsi',
-	d2ldev: 'd2ldev'
+	staticSite: 'staticSite'
 };
 
 function getClassName(hyphenatedName) {
@@ -58,7 +58,7 @@ async function getGeneratorType() {
 			message: 'What type of application is this?',
 			choices: [
 				{ title: 'BSI', value: applicationTypes.bsi },
-				{ title: 'd2l.dev', value: applicationTypes.d2ldev }
+				{ title: 'Static Site', value: applicationTypes.staticSite }
 			]
 		}
 	], {
@@ -68,8 +68,8 @@ async function getGeneratorType() {
 	});
 
 	switch (applicationType) {
-		case applicationTypes.d2ldev:
-			return generatorTypes.d2ldevSite;
+		case applicationTypes.staticSite:
+			return generatorTypes.staticSite;
 		case applicationTypes.bsi:
 			return generatorTypes.bsiApp;
 		default:
@@ -156,17 +156,17 @@ async function executeComponentGenerator() {
 
 }
 
-async function executeD2ldevSiteGenerator() {
-	const questions = [
+async function executeStaticSiteGenerator() {
+	const {
+		hyphenatedNameRaw,
+		description,
+		codeowners,
+		hostingTarget
+	} = await prompts([
 		{
 			type: 'text',
-			name: 'hyphenatedName',
+			name: 'hyphenatedNameRaw',
 			message: 'What would you like to name your app? Use hyphenation instead of camelcase.'
-		},
-		{
-			type: 'text',
-			name: 'subdomain',
-			message: 'What is the d2l.dev subdomain you want to publish this app to?'
 		},
 		{
 			type: 'text',
@@ -178,25 +178,96 @@ async function executeD2ldevSiteGenerator() {
 			name: 'codeowners',
 			message: 'What is/are the GitHub username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
 		},
-	];
-	const options = await prompts(questions, {
+		{
+			type: 'select',
+			name: 'hostingTarget',
+			message: 'Where would you like to host your app?',
+			choices: [
+				{ title: 'd2l.dev', value: 'd2ldev' },
+				{ title: 'S3 Bucket', value: 's3' },
+				{ title: 'Other', value: 'other' }
+			]
+		}
+	], {
 		onCancel: () => {
 			process.exit();
 		},
 	});
 
-	const hyphenatedName = options.hyphenatedName.toLowerCase();
+	const hyphenatedName = hyphenatedNameRaw.toLowerCase();
+
+	let roleToAssume, awsRegion, bucketPath, d2ldevSubdomain;
+	if (hostingTarget === 'd2ldev') {
+		const { subdomain } = await prompts([
+			{
+				type: 'text',
+				name: 'subdomain',
+				message: 'What is the d2l.dev subdomain you want to publish this app to?'
+			},
+		], {
+			onCancel: () => {
+				process.exit();
+			},
+		});
+
+		roleToAssume = `"arn:aws:iam::022062736489:role/r+Brightspace+${hyphenatedName}+repo"`;
+		awsRegion = 'ca-central-1';
+		bucketPath = `s3://d2l.dev/${subdomain}/main`;
+		d2ldevSubdomain = subdomain;
+	} else if (hostingTarget === 's3') {
+		const { role, region, path } = await prompts([
+			{
+				type: 'text',
+				name: 'role',
+				message: 'What is the AWS ARN of the role you wish to authenticate as? (e.g. arn:aws:iam::123456789012:role/r+my+role)'
+			},
+			{
+				type: 'text',
+				name: 'region',
+				message: 'What AWS region do you want to authenticate into? (e.g. us-east-1)'
+			},
+			{
+				type: 'text',
+				name: 'path',
+				message: 'What is the S3 bucket path you wish to publish to? (e.g. s3://my-bucket/my-path)'
+			}
+		], {
+			onCancel: () => {
+				process.exit();
+			},
+		});
+		roleToAssume = `"${role}"`;
+		awsRegion = region;
+		bucketPath = path;
+	}
+
 	const templateData = {
 		hyphenatedName,
-		className: getClassName(options.hyphenatedName),
+		className: getClassName(hyphenatedName),
 		tagName: `d2l-${hyphenatedName}`,
 		repoName: hyphenatedName,
-		subdomain: options.subdomain,
-		description: options.description,
-		codeowners: options.codeowners
+		description,
+		codeowners,
+		hostingTarget,
+		roleToAssume,
+		awsRegion,
+		bucketPath,
+		d2ldevSubdomain
 	};
 
-	setupD2ldev(templateData);
+	setupStaticSite(templateData);
+
+	console.log('\nTemplate setup complete!\n');
+
+	if (hostingTarget === 'd2ldev') {
+		console.log('Note: Make sure you have set up the appropriate permissions in github.com/Brightspace/repo-settings so that your repo can publish to d2l.dev.');
+		console.log('For details on how to do this, please review the d2l.dev setup guide (https://desire2learn.atlassian.net/wiki/x/H4A70).\n');
+	} else if (hostingTarget === 's3') {
+		console.log('Note: Make sure you have set up the appropriate permissions in github.com/Brightspace/repo-settings so that your repo can publish to the S3 bucket you specified.\n');
+	} else {
+		console.log('Note: Since you did not specify a publishing target, the generated .github/workflows/publish.yml file doesn\'t include an actual publishing step.');
+		console.log('In order to publish your site, you\'ll have to add your own publishing step.\n');
+	}
 }
 
 async function executeBsiAppGenerator() {
@@ -211,8 +282,8 @@ async function executeGenerator() {
 		case generatorTypes.component:
 			await executeComponentGenerator();
 			break;
-		case generatorTypes.d2ldevSite:
-			await executeD2ldevSiteGenerator();
+		case generatorTypes.staticSite:
+			await executeStaticSiteGenerator();
 			break;
 		case generatorTypes.bsiApp:
 			await executeBsiAppGenerator();
