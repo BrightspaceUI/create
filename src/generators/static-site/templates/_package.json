@@ -1,0 +1,30 @@
+{
+  "name": "<%= hyphenatedName %>",
+  "description": "<%= description %>",
+  "type": "module",
+  "repository": "https://github.com/Brightspace/<%= repoName %>.git",
+  "scripts": {
+    "start": "web-dev-server --watch",
+    "build": "rimraf dist && rollup -c rollup.config.js"
+  },
+  "keywords": [],
+  "author": "D2L Corporation",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@brightspace-ui/core": "^3",
+    "lit": "^3"
+  },
+  "devDependencies": {
+    "@brightspace-ui/browserslist-config": "^1",
+    "@rollup/plugin-babel": "^6",
+    "@rollup/plugin-dynamic-import-vars": "^2",
+    "@rollup/plugin-node-resolve": "^15",
+    "@rollup/plugin-replace": "^5",
+    "@rollup/plugin-terser": "^0",
+    "@web/dev-server": "^0",
+    "@web/dev-server-rollup": "^0",
+    "@web/rollup-plugin-html": "^2",
+    "rimraf": "^5",
+    "rollup": "^4"
+  }
+}
