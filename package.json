@@ -31,6 +31,6 @@
     "babel-plugin-transform-dynamic-import": "^2",
     "eslint": "^8",
     "eslint-config-brightspace": "^1",
-    "rimraf": "^5.0.7"
+    "rimraf": "^6.0.1"
   }
 }
