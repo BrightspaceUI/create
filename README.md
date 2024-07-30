@@ -47,7 +47,7 @@ Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/ma
 
 ### Test Reporting
 
-In order test reports to be submitted, the repo needs to be configured with `AWS_*` tokens with the correct permissions.
+In order for test reports to be submitted, the repo needs to be configured with `AWS_*` tokens with the correct permissions.
 
 Learn more in the [action docs](https://github.com/Brightspace/test-reporting-action?tab=readme-ov-file#set-up).
 
