@@ -1,3 +1,4 @@
+import deepMerge from 'deepmerge';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,31 +12,9 @@ export function mergeJSON(filePathNewJSON, filePathOriginalJSON) {
 
 	const newContentJSON = JSON.parse(newContent);
 	const originalContentJSON = JSON.parse(originalContent);
+	const mergedContentJSON = deepMerge(originalContentJSON, newContentJSON);
 
-	Object.keys(originalContentJSON).forEach(key => {
-		if (newContentJSON[key]) {
-			let changes = false;
-			Object.keys(newContentJSON[key]).forEach(subkey => {
-				originalContentJSON[key][subkey] = newContentJSON[key][subkey];
-				changes = true;
-			});
-			if (changes) {
-				const ordered = {};
-				Object.keys(originalContentJSON[key]).sort().forEach(subkey => {
-					ordered[subkey] = originalContentJSON[key][subkey];
-				});
-				originalContentJSON[key] = ordered;
-			}
-		}
-	});
-
-	Object.keys(newContentJSON).forEach(key => {
-		if (!originalContentJSON[key]) {
-			originalContentJSON[key] = newContentJSON[key];
-		}
-	});
-
-	fs.writeFileSync(filePathOriginalJSON, JSON.stringify(originalContentJSON, null, 2));
+	fs.writeFileSync(filePathOriginalJSON, JSON.stringify(mergedContentJSON, null, 2));
 }
 
 export function mergeText(filePathNewText, filePathOriginalText) {
@@ -80,6 +59,24 @@ export function replaceText(source, replacements) {
 
 	fs.writeFileSync(source, result, 'utf8');
 }
+
+export const sortJSONMembers = (source, members) => {
+	const fileContent = fs.readFileSync(source, 'utf8');
+	const result = JSON.parse(fileContent);
+
+	members.forEach(member => {
+		if (!result[member]) {
+			return;
+		}
+		const ordered = {};
+		Object.keys(result[member]).sort().forEach(key => {
+			ordered[key] = result[member][key];
+		});
+		result[member] = ordered;
+	});
+
+	fs.writeFileSync(source, JSON.stringify(result, null, 2));
+};
 
 function copyAndProcessFile(sourceRoot, destinationRoot, relativePath, fileName, plugins = []) {
 	const context = {

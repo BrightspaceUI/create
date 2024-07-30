@@ -1,4 +1,4 @@
-import { copyFile, copyFilesInDir, getDestinationPath, mergeJSON, replaceText } from '../../helper.js';
+import { copyFile, copyFilesInDir, getDestinationPath, mergeJSON, replaceText, sortJSONMembers } from '../../helper.js';
 
 export function run(templateData) {
 	mergeJSON(
@@ -20,4 +20,5 @@ export function run(templateData) {
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, templateDataElement);
 
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	sortJSONMembers(`${getDestinationPath(templateData.hyphenatedName)}/package.json`, ['dependencies', 'devDependencies']);
 }

@@ -1,7 +1,7 @@
 import '../<%= hyphenatedName %>.js';
 import { runConstructor } from '@brightspace-ui/testing';
 
-describe('<%= className %>', () => {
+describe('<%= tagName %>', () => {
 
 	describe('constructor', () => {
 		it('should construct', () => {
