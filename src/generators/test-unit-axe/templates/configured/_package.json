@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "npm run lint && npm run test:unit",
+    "test": "npm run lint && npm run test:axe && npm run test:unit",
+    "test:axe": "d2l-test-runner axe --chrome",
     "test:unit": "d2l-test-runner"
   },
   "devDependencies": {

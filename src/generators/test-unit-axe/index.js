@@ -9,12 +9,14 @@ export function run(templateData) {
 		`${__dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
-
 	copyFile(
 		`${__dirname}/templates/configured/_element.test.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`
 	);
+	copyFile(
+		`${__dirname}/templates/configured/_element.axe.js`,
+		`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.axe.js`
+	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`, templateData);
-
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
