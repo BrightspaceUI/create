@@ -23,12 +23,13 @@ npm init @brightspace-ui
 * Unit tests with cross-browser testing
 * Continuous Integration using GitHub Actions
 * Dependabot
-* Publish to NPM
+* [GitHub Release and publish to NPM*](#semantic-release)
 
 ### Optional
 
 * Localization
-* Visual diff testing*
+* [Visual diff testing*](#visual-diff-testing)
+* [Test reporting*](#test-reporting)
 
 \* Some additional setup required (see below)
 
@@ -43,6 +44,13 @@ Visual diff results are published to a bucket in S3 and need special tokens to d
 In order for the release workflow to automatically update the version, the repo needs to be configured with a `D2L_RELEASE_TOKEN`.
 
 Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/release-token.md).
+
+### Test Reporting
+
+In order test reports to be submitted, the repo needs to be configured with `AWS_*` tokens with the correct permissions.
+
+Learn more in the [action docs](https://github.com/Brightspace/test-reporting-action?tab=readme-ov-file#set-up).
+
 
 ## Developing and Contributing
 

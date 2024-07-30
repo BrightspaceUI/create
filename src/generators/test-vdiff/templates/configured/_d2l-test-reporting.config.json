@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "pattern": "**/test/*.vdiff.js",
+      "type": "UI Visual Diff"
+    }
+  ]
+}

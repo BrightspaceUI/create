@@ -8,8 +8,9 @@ import { run as setupElement } from './generators/wc-lit-element/index.js';
 import { run as setupLocalization } from './generators/localization/index.js';
 import { run as setupRelease } from './generators/release/index.js';
 import { run as setupStaticSite } from './generators/static-site/index.js';
+import { run as setupTestReporting } from './generators/test-reporting/index.js';
 import { run as setupTestUnitAxe } from './generators/test-unit-axe/index.js';
-import { run as setupTestVdiff } from './generators/test-vdiff/index.js';
+import { run as setupTestVDiff } from './generators/test-vdiff/index.js';
 
 const generatorTypes = {
 	component: 'component',
@@ -78,7 +79,7 @@ async function getGeneratorType() {
 }
 
 async function getComponentOptions() {
-	const questions = [
+	let templateData = await prompts([
 		{
 			type: 'text',
 			name: 'hyphenatedName',
@@ -121,12 +122,45 @@ async function getComponentOptions() {
 				{ title: 'No', value: false }
 			]
 		},
-	];
-	return await prompts(questions, {
+		{
+			type: 'select',
+			name: 'testReporting',
+			message: 'Would you like test reporting set up?',
+			choices: [
+				{ title: 'Yes', value: true },
+				{ title: 'No', value: false }
+			]
+		}
+	], {
 		onCancel: () => {
 			process.exit();
 		},
 	});
+
+	if (templateData.testReporting) {
+		const testReportingTemplateData = await prompts([
+			{
+				type: 'text',
+				name: 'testReportingTool',
+				message: 'What is your components tool based on the taxonomy in https://expanse.desire2learn.com/pages/source/source.html'
+			}, {
+				type: 'text',
+				name: 'testReportingExperience',
+				message: 'What is your components experience based on the taxonomy in https://expanse.desire2learn.com/pages/source/source.html'
+			},
+		], {
+			onCancel: () => {
+				process.exit();
+			},
+		});
+
+		templateData = {
+			...templateData,
+			...testReportingTemplateData
+		};
+	}
+
+	return templateData;
 }
 
 async function executeComponentGenerator() {
@@ -148,12 +182,12 @@ async function executeComponentGenerator() {
 
 	setupDefaultContent(options);
 	setupElement(options);
+	if (options.testReporting) setupTestReporting(options);
 	setupTestUnitAxe(options);
-	if (options.vdiff) setupTestVdiff(options);
+	if (options.vdiff) setupTestVDiff(options);
 	setupDemo(options);
 	if (options.localization) setupLocalization(options);
 	setupRelease(options);
-
 }
 
 async function executeStaticSiteGenerator() {

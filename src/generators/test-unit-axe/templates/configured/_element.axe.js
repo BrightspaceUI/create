@@ -1,7 +1,7 @@
 import '../<%= hyphenatedName %>.js';
 import { expect, fixture, html } from '@brightspace-ui/testing';
 
-describe('<%= className %>', () => {
+describe('<%= tagName %>', () => {
 
 	describe('accessibility', () => {
 		it('should pass all aXe tests', async() => {
