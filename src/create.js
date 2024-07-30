@@ -8,7 +8,7 @@ import { run as setupElement } from './generators/wc-lit-element/index.js';
 import { run as setupLocalization } from './generators/localization/index.js';
 import { run as setupRelease } from './generators/release/index.js';
 import { run as setupStaticSite } from './generators/static-site/index.js';
-import { run as setupTestUnit } from './generators/test-unit/index.js';
+import { run as setupTestUnitAxe } from './generators/test-unit-axe/index.js';
 import { run as setupTestVdiff } from './generators/test-vdiff/index.js';
 
 const generatorTypes = {
@@ -148,7 +148,7 @@ async function executeComponentGenerator() {
 
 	setupDefaultContent(options);
 	setupElement(options);
-	setupTestUnit(options);
+	setupTestUnitAxe(options);
 	if (options.vdiff) setupTestVdiff(options);
 	setupDemo(options);
 	if (options.localization) setupLocalization(options);

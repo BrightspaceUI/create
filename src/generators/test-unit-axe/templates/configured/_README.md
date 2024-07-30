@@ -16,6 +16,9 @@ npm run lint:eslint
 # stylelint
 npm run lint:style
 
+# accessibility tests
+npm run test:axe
+
 # unit tests
 npm run test:unit
 ```
