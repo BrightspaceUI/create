@@ -34,6 +34,10 @@ export function run(templateData) {
 		);
 	}
 
+	copyFile(
+		`${__dirname}/templates/static/test/.eslintrc.json`,
+		`${getDestinationPath(templateData.hyphenatedName)}/test/.eslintrc.json`
+	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.test.js`, templateData);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/test/${templateData.hyphenatedName}.axe.js`, templateData);
 	sortJSONMembers(`${getDestinationPath(templateData.hyphenatedName)}/package.json`, ['dependencies', 'devDependencies']);
