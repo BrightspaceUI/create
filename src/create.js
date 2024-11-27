@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console */
 import prompts from 'prompts';
 import { run as setupDefaultContent } from './generators/default-content/index.js';
 import { run as setupDemo } from './generators/demo/index.js';

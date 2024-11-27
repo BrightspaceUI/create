@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "rimraf dist && babel src --out-dir dist --copy-files --include-dotfiles",
-    "lint:eslint": "eslint . --ext .js,.html",
+    "lint:eslint": "eslint .",
     "test": "npm run lint:eslint"
   },
   "files": [
@@ -30,8 +30,8 @@
     "@babel/preset-env": "^7",
     "babel-eslint": "^10",
     "babel-plugin-transform-dynamic-import": "^2",
-    "eslint": "^8",
-    "eslint-config-brightspace": "^1",
+    "eslint": "^9",
+    "eslint-config-brightspace": "^2",
     "rimraf": "^6.0.1"
   }
 }
