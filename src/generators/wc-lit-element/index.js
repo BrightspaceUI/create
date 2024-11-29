@@ -1,4 +1,4 @@
-import { copyFile, copyFilesInDir, getDestinationPath, mergeJSON, replaceText, sortJSONMembers } from '../../helper.js';
+import { copyFile, getDestinationPath, mergeJSON, replaceText, sortJSONMembers } from '../../helper.js';
 
 export function run(templateData) {
 	mergeJSON(
