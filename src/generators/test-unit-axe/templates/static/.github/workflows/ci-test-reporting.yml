@@ -12,8 +12,9 @@ jobs:
         uses: Brightspace/third-party-actions@actions/setup-node
         with:
           node-version-file: .nvmrc
+          cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Lint (JavaScript)
         run: npm run lint:eslint
       - name: Lint (CSS)
