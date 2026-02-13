@@ -53,5 +53,10 @@ export function run(templateData) {
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
 
+	copyFile(
+		`${__dirname}/templates/configured/_npmrc`,
+		`${getDestinationPath(templateData.hyphenatedName)}/.npmrc`
+	);
+
 	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
