@@ -87,10 +87,10 @@ async function getComponentOptions() {
 		{
 			type: 'select',
 			name: 'org',
-			message: 'Is this a labs or official component?',
+			message: 'Which GitHub org will this repo be in?',
 			choices: [
-				{ title: 'labs', value: 'labs' },
-				{ title: 'official', value: 'official' }
+				{ title: 'Brightspace', value: 'Brightspace' },
+				{ title: 'BrightspaceUI', value: 'BrightspaceUI' }
 			]
 		},
 		{
@@ -173,10 +173,10 @@ async function executeComponentGenerator() {
 	 */
 	options.hyphenatedName = options.hyphenatedName.toLowerCase();
 	options.className = getClassName(options.hyphenatedName);
-	options.tagName = `d2l-${options.org === 'labs' ? 'labs-' : ''}${options.hyphenatedName}`;
+	options.tagName = `d2l-${options.hyphenatedName}`;
 
-	options.githubOrg = options.org === 'official' ? 'BrightspaceUI' : 'BrightspaceUILabs';
-	options.orgName = options.org === 'official' ? '@brightspace-ui' : '@brightspace-ui-labs';
+	options.githubOrg = options.org;
+	options.orgName = options.org === 'BrightspaceUI' ? '@brightspace-ui' : '@d2l';
 	options.packageName = `${options.orgName}/${options.hyphenatedName}`;
 
 	setupDefaultContent(options);
