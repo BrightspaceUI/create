@@ -20,7 +20,7 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload test report
-        if: failure() || success()
+        if: (!cancelled()) && github.actor != 'dependabot[bot]'
         uses: Brightspace/test-reporting-action@main
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}

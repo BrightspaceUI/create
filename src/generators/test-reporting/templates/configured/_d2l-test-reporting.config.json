@@ -1,4 +1,3 @@
 {
-  "tool": "<%= testReportingTool %>",
-  "experience": "<%= testReportingExperience %>"
+  "tool": "<%= testReportingTool %>"
 }

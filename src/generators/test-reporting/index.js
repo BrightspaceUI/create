@@ -3,8 +3,7 @@ import { copyFile, getDestinationPath, mergeText, replaceText } from '../../help
 export function run(templateData) {
 	templateData = {
 		...templateData,
-		testReportingTool: templateData.testReportingTool?.trim() || 'Unknown',
-		testReportingExperience: templateData.testReportingExperience?.trim() || 'Unknown'
+		testReportingTool: templateData.testReportingTool?.trim() || 'Unknown'
 	};
 
 	mergeText(

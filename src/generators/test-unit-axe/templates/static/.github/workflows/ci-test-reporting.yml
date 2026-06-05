@@ -20,7 +20,6 @@ jobs:
       - name: Lint (CSS)
         run: npm run lint:style
       - name: Accessibility tests
-        id: at
         run: npm run test:axe
       - name: Upload test report
         if: (!cancelled()) && github.actor != 'dependabot[bot]'
@@ -30,7 +29,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
       - name: Unit tests
-        id: ut
         run: npm run test:unit
       - name: Upload test report
         if: (!cancelled()) && github.actor != 'dependabot[bot]'
