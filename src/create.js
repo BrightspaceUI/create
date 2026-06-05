@@ -142,10 +142,6 @@ async function getComponentOptions() {
 				type: 'text',
 				name: 'testReportingTool',
 				message: 'What is your component\'s tool based on the taxonomy in https://expanse.desire2learn.com/pages/source/source.html'
-			}, {
-				type: 'text',
-				name: 'testReportingExperience',
-				message: 'What is your component\'s experience based on the taxonomy in https://expanse.desire2learn.com/pages/source/source.html'
 			},
 		], {
 			onCancel: () => {
