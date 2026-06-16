@@ -23,7 +23,7 @@ npm init @brightspace-ui
 * Unit tests with cross-browser testing
 * Continuous Integration using GitHub Actions
 * Dependabot
-* [GitHub Release and publish to NPM*](#semantic-release)
+* [GitHub Release and Publishing*](#semantic-release)
 
 ### Optional
 
@@ -41,9 +41,9 @@ Visual diff results are published to a bucket in S3 and need special tokens to d
 
 ### Semantic Release
 
-In order for the release workflow to automatically update the version, the repo needs to be configured with a `D2L_RELEASE_TOKEN`.
+In order for the release workflow to automatically update the version, the repo needs to be configured with a `D2L_RELEASE_TOKEN`. Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/release-token.md).
 
-Learn more in the [action docs](https://github.com/BrightspaceUI/actions/blob/main/docs/release-token.md).
+There is also [additional setup required](https://github.com/BrightspaceUI/actions/tree/main/semantic-release#npm-package-deployment) for publishing, depending on whether your repo will publish to npm or CodeArtifact.
 
 ### Test Reporting
 
