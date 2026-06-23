@@ -1,16 +1,9 @@
 module.exports = {
-	plugins: ['babel-plugin-transform-dynamic-import'],
+	plugins: [
+		['polyfill-corejs3', { method: 'usage-global' }]
+	],
 	ignore: ['./src/generators/*/templates/**/*'],
 	presets: [
-		[
-			'@babel/env',
-			{
-				targets: {
-					node: '10',
-				},
-				corejs: 2,
-				useBuiltIns: 'usage',
-			},
-		],
-	],
+		['@babel/preset-env', { targets: { node: '10' } }]
+	]
 };
