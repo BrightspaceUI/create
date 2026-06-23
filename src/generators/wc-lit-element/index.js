@@ -2,7 +2,7 @@ import { copyFile, getDestinationPath, mergeJSON, replaceText, sortJSONMembers }
 
 export function run(templateData) {
 	mergeJSON(
-		`${__dirname}/templates/configured/_package.json`,
+		`${import.meta.dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
 
@@ -14,7 +14,7 @@ export function run(templateData) {
 		templateDataElement.localizeResources = '';
 	}
 	copyFile(
-		`${__dirname}/templates/configured/_element.js`,
+		`${import.meta.dirname}/templates/configured/_element.js`,
 		`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, templateDataElement);

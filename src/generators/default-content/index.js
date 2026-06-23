@@ -8,7 +8,7 @@ export function run(templateData) {
 		replacementsPackage.locales += `,\n"${templateData.hyphenatedName}.serge.json"`;
 	}
 	copyFile(
-		`${__dirname}/templates/configured/_package.json`,
+		`${import.meta.dirname}/templates/configured/_package.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/package.json`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/package.json`, replacementsPackage);
@@ -29,34 +29,34 @@ export function run(templateData) {
 
 	if (templateData.description) replacementsREADME.description = `\n${templateData.description}\n`;
 	copyFile(
-		`${__dirname}/templates/configured/_README.md`,
+		`${import.meta.dirname}/templates/configured/_README.md`,
 		`${getDestinationPath(templateData.hyphenatedName)}/README.md`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/README.md`, replacementsREADME);
 
 	if (templateData.codeowners) {
 		copyFile(
-			`${__dirname}/templates/configured/_CODEOWNERS`,
+			`${import.meta.dirname}/templates/configured/_CODEOWNERS`,
 			`${getDestinationPath(templateData.hyphenatedName)}/.github/CODEOWNERS`
 		);
 		replaceText(`${getDestinationPath(templateData.hyphenatedName)}/.github/CODEOWNERS`, { codeowners: templateData.codeowners });
 	}
 
 	copyFile(
-		`${__dirname}/templates/configured/LICENSE`,
+		`${import.meta.dirname}/templates/configured/LICENSE`,
 		`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/LICENSE`, { year: new Date().getFullYear().toString() });
 
 	copyFile(
-		`${__dirname}/templates/configured/_gitignore`,
+		`${import.meta.dirname}/templates/configured/_gitignore`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
 
 	copyFile(
-		`${__dirname}/templates/configured/_npmrc`,
+		`${import.meta.dirname}/templates/configured/_npmrc`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.npmrc`
 	);
 
-	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	copyFilesInDir(`${import.meta.dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 }
