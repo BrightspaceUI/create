@@ -7,11 +7,11 @@ export function run(templateData) {
 	};
 
 	mergeText(
-		`${__dirname}/templates/configured/_gitignore`,
+		`${import.meta.dirname}/templates/configured/_gitignore`,
 		`${getDestinationPath(templateData.hyphenatedName)}/.gitignore`
 	);
 	copyFile(
-		`${__dirname}/templates/configured/_d2l-test-reporting.config.json`,
+		`${import.meta.dirname}/templates/configured/_d2l-test-reporting.config.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/d2l-test-reporting.config.json`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/d2l-test-reporting.config.json`, templateData);

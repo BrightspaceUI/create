@@ -1,9 +1,4 @@
-import {
-	copyAndProcessDir,
-	getDestinationPath,
-	movePlugin,
-	replaceTextPlugin
-} from '../../helper.js';
+import { copyAndProcessDir, getDestinationPath, movePlugin, replaceTextPlugin } from '../../helper.js';
 import path from 'path';
 
 function genD2ldevReleaseTargetMessage(subdomain) {
@@ -42,7 +37,7 @@ export function run(templateData) {
 		d2ldevSubdomain
 	} = templateData;
 
-	const templateRoot = path.join(__dirname, 'templates');
+	const templateRoot = path.join(import.meta.dirname, 'templates');
 	const destinationRoot = getDestinationPath(hyphenatedName);
 
 	const releaseTargetMessage = d2ldevSubdomain

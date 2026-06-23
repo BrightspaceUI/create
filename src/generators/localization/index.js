@@ -14,11 +14,11 @@ export function run(templateData) {
 	}\n`
 	};
 
-	copyFilesInDir(`${__dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
+	copyFilesInDir(`${import.meta.dirname}/templates/static`, getDestinationPath(templateData.hyphenatedName));
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.js`, replacements);
 
 	copyFile(
-		`${__dirname}/templates/configured/_element.serge.json`,
+		`${import.meta.dirname}/templates/configured/_element.serge.json`,
 		`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.serge.json`
 	);
 	replaceText(`${getDestinationPath(templateData.hyphenatedName)}/${templateData.hyphenatedName}.serge.json`, templateData);
