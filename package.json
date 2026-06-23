@@ -28,7 +28,6 @@
     "@babel/core": "^8",
     "@babel/preset-env": "^8",
     "babel-plugin-polyfill-corejs3": "^1.0.0",
-    "babel-plugin-transform-dynamic-import": "^2",
     "eslint": "^9",
     "eslint-config-brightspace": "^4",
     "rimraf": "^6.0.1"
