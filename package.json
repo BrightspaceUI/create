@@ -4,7 +4,8 @@
   "description": "Initializer for Brightspace web components",
   "repository": "https://github.com/BrightspaceUI/create.git",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "bin": {
     "create-brightspace-ui": "./dist/create.js"
