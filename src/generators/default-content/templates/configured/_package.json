@@ -2,7 +2,7 @@
   "name": "<%= packageName %>",
   "description": "<%= description %>",
   "type": "module",
-  "repository": "https://github.com/<%= githubOrg %>/<%= hyphenatedName %>.git",
+  "repository": "https://github.com/Brightspace/<%= hyphenatedName %>.git",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:style",
     "lint:eslint": "eslint .",
@@ -18,8 +18,5 @@
   },
   "files": [
     "<%= hyphenatedName %>.js"<%= locales %>
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  ]
 }
