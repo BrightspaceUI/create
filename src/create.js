@@ -85,15 +85,6 @@ async function getComponentOptions() {
 			message: 'What would you like to name your component? Use hyphenation instead of camelcase. Do not include the d2l prefix.'
 		},
 		{
-			type: 'select',
-			name: 'org',
-			message: 'Which GitHub org will this repo be in?',
-			choices: [
-				{ title: 'Brightspace', value: 'Brightspace' },
-				{ title: 'BrightspaceUI', value: 'BrightspaceUI' }
-			]
-		},
-		{
 			type: 'text',
 			name: 'description',
 			message: 'What is the component description?'
@@ -101,7 +92,7 @@ async function getComponentOptions() {
 		{
 			type: 'text',
 			name: 'codeowners',
-			message: 'What is/are the GitHub username(s) of the codeowner(s)? (e.g., @janesmith, @johnsmith)'
+			message: 'What is the GitHub team that will be CODEOWNERS? (e.g., @Brightspace/team-name)'
 		},
 		{
 			type: 'select',
@@ -170,10 +161,7 @@ async function executeComponentGenerator() {
 	options.hyphenatedName = options.hyphenatedName.toLowerCase();
 	options.className = getClassName(options.hyphenatedName);
 	options.tagName = `d2l-${options.hyphenatedName}`;
-
-	options.githubOrg = options.org;
-	options.orgName = options.org === 'BrightspaceUI' ? '@brightspace-ui' : '@d2l';
-	options.packageName = `${options.orgName}/${options.hyphenatedName}`;
+	options.packageName = `@d2l/${options.hyphenatedName}`;
 
 	setupDefaultContent(options);
 	setupElement(options);

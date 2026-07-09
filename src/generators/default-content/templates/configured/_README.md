@@ -1,10 +1,8 @@
 # <%= packageName %>
-
-[![NPM version](https://img.shields.io/npm/v/<%= packageName %>.svg)](https://www.npmjs.org/package/<%= packageName %>)
-<%= labsChecklist %><%= description %>
+<%= description %>
 ## Installation
 
-Install from NPM:
+Install from CodeArtifact:
 
 ```shell
 npm install <%= packageName %>
