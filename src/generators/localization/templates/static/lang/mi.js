@@ -1,3 +1,3 @@
 export default {
-	"hello": "Kia ora"
+	"sample:hello": "Kia ora"
 };

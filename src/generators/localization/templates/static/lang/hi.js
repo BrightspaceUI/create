@@ -1,3 +1,3 @@
 export default {
-	"hello": "नमस्ते"
+	"sample:hello": "नमस्ते"
 };

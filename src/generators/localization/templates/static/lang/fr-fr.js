@@ -1,3 +1,3 @@
 export default {
-	"hello": "Bonjour"
+	"sample:hello": "Bonjour"
 };
