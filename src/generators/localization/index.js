@@ -4,7 +4,7 @@ export function run(templateData) {
 
 	const replacements = {
 		extends: 'LocalizeMixin(LitElement)',
-		localizeDemo: '${this.localize(\'hello\')}',
+		localizeDemo: '${this.localize(\'sample:hello\')}',
 		localizeMixin: 'import { LocalizeMixin } from \'@brightspace-ui/core/mixins/localize/localize-mixin.js\';\n',
 		localizeResources: `\n\tstatic get localizeConfig() {
 		return {

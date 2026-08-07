@@ -1,3 +1,3 @@
 export default {
-	"hello": "你好"
+	"sample:hello": "你好"
 };
